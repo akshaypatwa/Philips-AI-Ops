@@ -7,13 +7,11 @@ import {
   Sparkles,
   ShieldCheck,
   Brain,
-  Database,
   Workflow,
   MessageSquare,
   Layers,
   FileCheck2,
   GitBranch,
-  Boxes,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -41,7 +39,6 @@ const CARDS: Card[] = [
     chips: [
       { label: 'Conversational clarify', Icon: MessageSquare },
       { label: 'PI enrichment', Icon: Brain },
-      { label: 'Historical recall', Icon: Database },
       { label: 'Self-heal flows', Icon: Workflow },
     ],
     metric: { value: '25–45%', label: 'MTTR reduction' },
@@ -59,7 +56,6 @@ const CARDS: Card[] = [
     chips: [
       { label: 'Summarize incident', Icon: Sparkles },
       { label: 'Generate resolution', Icon: FileCheck2 },
-      { label: 'Draft customer update', Icon: MessageSquare },
       { label: '7-day memory', Icon: Layers },
     ],
     metric: { value: '40–70%', label: 'Review effort ↓' },
@@ -75,10 +71,9 @@ const CARDS: Card[] = [
     tag: 'One click on a closed Update Set generates Design, Runbook, LLD, Test Cases, KT and CAB docs.',
     Icon: FileText,
     chips: [
-      { label: 'Update Set intelligence', Icon: GitBranch },
-      { label: 'Schema-driven AI', Icon: ShieldCheck },
-      { label: 'Parallel generation', Icon: Boxes },
-      { label: 'Native ServiceNow', Icon: Workflow },
+      { label: 'Auto Documents Generation', Icon: FileText },
+      { label: 'Standardized Quality Specs', Icon: ShieldCheck },
+      { label: 'Update Set Intelligence', Icon: GitBranch },
     ],
     metric: { value: '8–10×', label: 'Faster docs' },
     accentFrom: '#34d399',
@@ -100,7 +95,7 @@ function SuiteCard({ card, idx, hovered, setHovered }: {
   const baseLift = idx === 1 ? -12 : 0;
 
   const transform = isHovered
-    ? 'perspective(1800px) rotateY(0deg) rotateX(4deg) translateY(-24px) translateZ(60px) scale(1.05)'
+    ? 'perspective(1800px) rotateY(0deg) rotateX(4deg) translateY(-20px) translateZ(50px) scale(1.03)'
     : `perspective(1800px) rotateY(${baseRotate}deg) rotateX(4deg) translateY(${baseLift}px) translateZ(0)`;
 
   return (
@@ -144,12 +139,13 @@ function SuiteCard({ card, idx, hovered, setHovered }: {
         {/* Giant background number watermark */}
         <span
           aria-hidden
-          className="absolute right-0 -top-4 text-[12.5rem] font-black leading-none select-none pointer-events-none"
+          className="absolute right-4 -top-6 text-[10rem] sm:text-[11rem] font-extrabold leading-none select-none pointer-events-none tracking-tighter transition-all duration-700"
           style={{
-            color: `${card.accentFrom}2b`, // elegant semi-transparent green fill
-            WebkitTextStroke: `1.5px ${card.accentFrom}44`, // semi-transparent green stroke
-            fontFamily: "'Outfit', sans-serif",
-            letterSpacing: '-0.08em',
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            color: card.accentFrom,
+            opacity: isHovered ? 0.32 : 0.15,
+            filter: isHovered ? `drop-shadow(0 8px 30px ${card.accentFrom}35)` : 'none',
+            transform: isHovered ? 'scale(1.03) translateY(-4px) translateZ(20px)' : 'scale(1)',
           }}
         >
           {card.n}
@@ -166,84 +162,69 @@ function SuiteCard({ card, idx, hovered, setHovered }: {
           }}
         />
 
-        <div className="relative z-10 p-8 flex flex-col h-full min-h-[520px] justify-between">
-          {/* Header: number badge + icon */}
-          <div className="flex items-start justify-between">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-white/[0.04] border border-slate-200 dark:border-[#80b6a1]/20 shadow-sm">
-              <span className="h-2 w-2 rounded-full" style={{ background: card.accentFrom }} />
-              <span className="font-mono text-[10.5px] font-black tracking-[0.3em] uppercase text-[#009e72] dark:text-[#80b6a1]">
-                USE CASE · {card.n}
-              </span>
-            </div>
-
-            <div
-              className="relative h-15 w-15 rounded-2xl grid place-items-center shadow-lg"
-              style={{
-                background: `linear-gradient(135deg, ${card.accentFrom}, ${card.accentTo})`,
-                boxShadow: `0 12px 28px -6px ${card.glow}`,
-              }}
-            >
-              <div
-                className="absolute inset-0 rounded-2xl opacity-50"
-                style={{
-                  background: `radial-gradient(circle at 30% 25%, rgba(255,255,255,0.6) 0%, transparent 50%)`,
-                }}
-              />
-              <card.Icon className="relative h-8 w-8 text-white" strokeWidth={2.5} />
-            </div>
-          </div>
-
+        <div className="relative z-10 p-6 flex flex-col h-full min-h-[300px] justify-between">
           <div>
             {/* Kicker */}
-            <div className="mt-7 text-[12px] font-black tracking-[0.3em] uppercase text-[#009e72] dark:text-[#84cc16]">
+            <div className="text-[11px] font-black tracking-[0.25em] uppercase text-[#009e72] dark:text-[#84cc16]">
               {card.kicker}
             </div>
 
             {/* Name */}
             <h3
-              className="mt-2.5 text-[32px] leading-[1.05] font-black tracking-tight text-[#0c1e1c] dark:text-white"
-              style={{ fontFamily: "'Outfit', sans-serif" }}
+              className="mt-1.5 text-[26px] sm:text-[28px] leading-[1.1] font-black tracking-tight text-[#0c1e1c] dark:text-white"
+              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
               {card.name}
             </h3>
 
             {/* Tagline */}
-            <p className="mt-4 text-[16px] leading-[1.55] font-semibold text-[#2b4c48] dark:text-slate-300/90">
+            <p className="mt-2 text-[14px] leading-relaxed font-semibold text-[#2b4c48] dark:text-slate-300/90">
               {card.tag}
             </p>
 
-            {/* Capability chips */}
-            <div className="mt-6 grid grid-cols-2 gap-2.5">
+            {/* Capability list - Upgraded to highly readable vertical checklist rows */}
+            <div className="mt-3.5 space-y-1.5">
               {card.chips.map((c) => (
                 <div
                   key={c.label}
-                  className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-slate-50/80 dark:bg-white/[0.025] border border-slate-200/70 dark:border-white/5 shadow-sm"
+                  className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-white/70 dark:bg-white/[0.02] border border-slate-200/50 dark:border-white/5 shadow-[0_2px_8px_rgba(0,0,0,0.02)] dark:shadow-none hover:border-slate-300 dark:hover:border-white/10 hover:bg-white dark:hover:bg-white/[0.03] transition-all duration-300 group/chip"
                 >
-                  <c.Icon className="h-4 w-4 flex-shrink-0" style={{ color: card.accentFrom }} strokeWidth={2.5} />
-                  <span className="text-[11.5px] font-extrabold tracking-tight text-[#132c2a] dark:text-slate-200 truncate">
-                    {c.label}
-                  </span>
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="h-7 w-7 rounded-lg bg-white dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.06] grid place-items-center flex-shrink-0 shadow-sm transition-transform duration-300 group-hover/chip:scale-105">
+                      <c.Icon className="h-3.5 w-3.5 transition-colors duration-300" style={{ color: card.accentFrom }} strokeWidth={2.5} />
+                    </div>
+                    <span className="text-[12px] font-black tracking-tight text-[#132c2a] dark:text-slate-200">
+                      {c.label}
+                    </span>
+                  </div>
+                  <div className="h-4 w-4 rounded-full bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] flex items-center justify-center flex-shrink-0">
+                    <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: card.accentFrom }} />
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Footer: metric + CTA */}
-          <div className="mt-8 pt-5 border-t border-dashed border-slate-200 dark:border-white/8 flex items-end justify-between">
-            <div>
+          <div className="mt-5 pt-3.5 border-t border-dashed border-slate-200 dark:border-white/8 flex items-end justify-between">
+            <div className="relative pl-3.5 border-l-2" style={{ borderColor: card.accentFrom }}>
               <div
-                className="font-mono text-[36px] font-black leading-none"
-                style={{ color: card.accentFrom }}
+                className="text-[32px] font-black leading-none tracking-tight"
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  color: card.accentFrom,
+                  textShadow: isHovered ? `0 4px 15px ${card.accentFrom}25` : undefined,
+                }}
               >
                 {card.metric.value}
               </div>
-              <div className="mt-1.5 text-[11px] font-black uppercase tracking-[0.22em] text-slate-500 dark:text-[#80b6a1]/80">
+              <div className="mt-1 text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-[#80b6a1]/60">
                 {card.metric.label}
               </div>
             </div>
 
             <div
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-[12px] font-black uppercase tracking-[0.18em] transition-all duration-300 cursor-pointer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-[11px] font-black uppercase tracking-[0.15em] transition-all duration-300 cursor-pointer"
               style={{
                 background: isHovered ? card.accentFrom : 'transparent',
                 color: isHovered ? '#ffffff' : card.accentFrom,
@@ -292,10 +273,10 @@ export default function SlideSuite() {
       />
 
       {/* Content */}
-      <div className="relative z-10 h-full w-full px-12 sm:px-16 py-10 flex flex-col">
+      <div className="relative z-10 h-full w-full px-12 sm:px-16 py-3 sm:py-4 flex flex-col justify-between overflow-visible">
         {/* Header */}
-        <div className="flex items-start justify-between gap-6">
-          <div className="space-y-3">
+        <div className="flex items-start justify-between gap-6 flex-shrink-0">
+          <div className="space-y-3.5">
             <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/95 dark:bg-[#030c0b]/40 backdrop-blur-md border border-slate-200 dark:border-[#80b6a1]/25 shadow-sm animate-fade-in-up">
               <Sparkles className="h-3.5 w-3.5 text-[#00c08b] animate-pulse" />
               <span className="font-mono text-[10px] sm:text-[11px] font-black tracking-[0.38em] text-[#009e72] dark:text-[#80b6a1] uppercase">
@@ -319,7 +300,7 @@ export default function SlideSuite() {
               three operational AIs.
             </h2>
             <p
-              className="max-w-2xl text-[15px] sm:text-[16px] font-semibold text-[#2b4c48] dark:text-slate-300/90 leading-relaxed animate-fade-in-up"
+              className="max-w-2xl text-[14.5px] sm:text-[15.5px] font-semibold text-[#2b4c48] dark:text-slate-300/90 leading-relaxed animate-fade-in-up"
               style={{ animationDelay: '180ms' }}
             >
               Each one solves a different pain point of ServiceNow operations — together they form an
@@ -345,7 +326,7 @@ export default function SlideSuite() {
         </div>
 
         {/* Cards row */}
-        <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-7 lg:gap-9 mt-8 lg:mt-10 items-stretch">
+        <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mt-4 items-stretch overflow-visible pb-4">
           {CARDS.map((card, idx) => (
             <SuiteCard key={card.n} card={card} idx={idx} hovered={hovered} setHovered={setHovered} />
           ))}
@@ -353,7 +334,7 @@ export default function SlideSuite() {
 
         {/* Bottom strip — common foundation */}
         <div
-          className="mt-7 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#00c08b]/8 via-[#84cc16]/8 to-[#80b6a1]/8 dark:from-[#00c08b]/12 dark:via-[#84cc16]/10 dark:to-[#80b6a1]/12 border border-[#00c08b]/15 dark:border-[#80b6a1]/15 flex flex-wrap items-center justify-between gap-4 animate-fade-in-up"
+          className="mt-4 px-6 py-3 rounded-2xl bg-gradient-to-r from-[#00c08b]/8 via-[#84cc16]/8 to-[#80b6a1]/8 dark:from-[#00c08b]/12 dark:via-[#84cc16]/10 dark:to-[#80b6a1]/12 border border-[#00c08b]/15 dark:border-[#80b6a1]/15 flex flex-wrap items-center justify-between gap-4 animate-fade-in-up flex-shrink-0"
           style={{ animationDelay: '700ms' }}
         >
           <div className="flex items-center gap-3">
