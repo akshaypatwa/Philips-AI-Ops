@@ -236,7 +236,7 @@ export default function SlideHero({ next }: { next: () => void }) {
                   aria-hidden
                   className="absolute inset-0 blur-2xl opacity-60 dark:opacity-80 bg-clip-text text-transparent text-[5.2rem] sm:text-[6.8rem] lg:text-[8.2rem] xl:text-[9.3rem] font-black italic leading-[0.9] tracking-[-0.07em]"
                   style={{
-                    fontFamily: "'Outfit', 'Plus Jakarta Sans', sans-serif",
+                    fontFamily: "'Sora', sans-serif",
                     backgroundImage: 'linear-gradient(110deg, #00c08b 0%, #34d399 45%, #84cc16 100%)',
                     WebkitBackgroundClip: 'text',
                     backgroundClip: 'text',
@@ -247,7 +247,7 @@ export default function SlideHero({ next }: { next: () => void }) {
                 <span
                   className="relative z-30 bg-clip-text text-transparent text-[5.2rem] sm:text-[6.8rem] lg:text-[8.2rem] xl:text-[9.3rem] font-black italic leading-[0.9] tracking-[-0.07em] cursor-default transition-all duration-300 hover:scale-[1.04] inline-block"
                   style={{
-                    fontFamily: "'Outfit', 'Plus Jakarta Sans', sans-serif",
+                    fontFamily: "'Sora', sans-serif",
                     backgroundImage: 'linear-gradient(110deg, #00c08b 0%, #34d399 45%, #84cc16 100%)',
                     WebkitBackgroundClip: 'text',
                     backgroundClip: 'text',

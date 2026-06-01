@@ -1,59 +1,21 @@
-import { useEffect, useRef, useState } from 'react';
 import {
-  Clock,
-  Zap,
-  CheckCircle,
-  Percent,
+  FileText,
   Sparkles,
+  Cpu,
+  Zap,
+  Activity,
+  ShieldCheck,
+  CheckCircle2,
+  Lock,
   GitBranch,
-  Building,
-  Users,
-  CalendarClock,
 } from 'lucide-react';
 
-function useAnimatedNumber(target: number, durationMs = 450) {
-  const [value, setValue] = useState(target);
-  const fromRef = useRef(target);
-  const startRef = useRef<number>(0);
-  const rafRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    fromRef.current = value;
-    startRef.current = performance.now();
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
-
-    const step = (now: number) => {
-      const t = Math.min(1, (now - startRef.current) / durationMs);
-      const eased = 1 - Math.pow(1 - t, 3);
-      const v = fromRef.current + (target - fromRef.current) * eased;
-      setValue(v);
-      if (t < 1) rafRef.current = requestAnimationFrame(step);
-    };
-    rafRef.current = requestAnimationFrame(step);
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [target]);
-
-  return Math.round(value);
-}
-
 export default function SlideDocsImpact() {
-  const [developers, setDevelopers] = useState(10);
-  const [sprintWeeks, setSprintWeeks] = useState(2);
-
-  const targetHours = Math.round(developers * 3.5 * (sprintWeeks / 2) * 2);
-  const targetDocs = Math.round(developers * 2 * (sprintWeeks / 2));
-
-  const docHoursSaved = useAnimatedNumber(targetHours);
-  const documentsCreated = useAnimatedNumber(targetDocs);
-
   return (
-    <div className="relative h-full w-full overflow-hidden bg-white dark:bg-ink-900 flex flex-col transition-colors duration-500">
+    <div className="relative h-full w-full overflow-hidden bg-white dark:bg-ink-900 flex flex-col transition-colors duration-500 text-slate-800 dark:text-white">
       {/* Brand spotlights */}
-      <div className="absolute top-[-12%] left-[-10%] w-[55%] h-[55%] bg-[#00c08b]/15 dark:bg-[#00c08b]/20 rounded-full blur-[140px] pointer-events-none z-0 animate-breathe" />
-      <div className="absolute bottom-[-12%] right-[-10%] w-[50%] h-[50%] bg-[#84cc16]/12 dark:bg-[#84cc16]/14 rounded-full blur-[120px] pointer-events-none z-0 animate-pulse-glow" />
+      <div className="absolute top-[-12%] left-[-10%] w-[55%] h-[55%] bg-[#00c08b]/15 dark:bg-[#00c08b]/22 rounded-full blur-[140px] pointer-events-none z-0 animate-breathe" />
+      <div className="absolute bottom-[-12%] right-[-10%] w-[50%] h-[50%] bg-[#84cc16]/10 dark:bg-[#84cc16]/14 rounded-full blur-[120px] pointer-events-none z-0 animate-pulse-glow" />
       <div
         className="absolute inset-0 opacity-[0.04] dark:opacity-[0.07] z-0 pointer-events-none"
         style={{
@@ -65,265 +27,213 @@ export default function SlideDocsImpact() {
         }}
       />
 
-      <div className="relative z-10 flex-1 px-10 sm:px-14 py-8 flex flex-col justify-between overflow-hidden">
-
+      <div className="relative z-10 flex-1 px-10 sm:px-14 py-5 sm:py-6 flex flex-col justify-between overflow-visible">
         {/* Header */}
-        <div className="space-y-2 flex-shrink-0">
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-[#030c0b]/55 backdrop-blur-md border border-[#00c08b]/25 shadow-sm animate-fade-in-up">
-            <Building className="h-3.5 w-3.5 text-[#00c08b]" />
-            <span className="font-mono text-[10px] sm:text-[11px] font-black tracking-[0.36em] text-[#009e72] dark:text-[#80b6a1] uppercase">
-              Use Case 03 · SDLC Velocity & Business Value
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 flex-shrink-0 pb-1.5 border-b border-slate-100 dark:border-white/5 animate-fade-in-up">
+          <div>
+            <h2
+              className="text-[2.1rem] sm:text-[2.3rem] font-extrabold tracking-tight leading-none text-[#0c1e1c] dark:text-white font-sora"
+            >
+              AIRA Documenter ·{' '}
+              <span
+                className="bg-clip-text text-transparent italic"
+                style={{ backgroundImage: 'linear-gradient(110deg, #00c08b, #34d399 55%, #84cc16)' }}
+              >
+                Unlocking SDLC Velocity
+              </span>
+            </h2>
+          </div>
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-[#030c0b]/55 backdrop-blur-md border border-[#00c08b]/25 shadow-sm self-start sm:self-auto">
+            <GitBranch className="h-3.5 w-3.5 text-[#00c08b]" />
+            <span className="font-mono text-[9px] sm:text-[10px] font-black tracking-[0.25em] text-[#009e72] dark:text-[#80b6a1] uppercase">
+              Use Case 03 · Velocity & Documentation Value
             </span>
           </div>
-          <h2
-            className="text-[2.4rem] sm:text-[2.9rem] font-black tracking-tight leading-[1.04] text-[#0c1e1c] dark:text-white animate-fade-in-up"
-            style={{ animationDelay: '80ms', fontFamily: "'Outfit', sans-serif" }}
-          >
-            AIRA Documenter ·{' '}
-            <span
-              className="bg-clip-text text-transparent italic"
-              style={{ backgroundImage: 'linear-gradient(110deg, #00c08b, #34d399 55%, #84cc16)' }}
-            >
-              Unlocking Engineering Velocity
-            </span>
-          </h2>
-          <p className="max-w-4xl text-[14.5px] sm:text-[16px] font-semibold text-slate-700 dark:text-slate-200 leading-relaxed animate-fade-in-up" style={{ animationDelay: '160ms' }}>
-            Eliminate hours of manual design writing and runbook compilation. Developers focus on code while AIRA automates compliance in near real-time.
-          </p>
         </div>
 
-        {/* Impact grid */}
-        <div className="flex-1 grid grid-cols-12 gap-6 mt-5 items-stretch overflow-hidden min-h-[360px] max-h-[470px]">
-
-          {/* Left: metric cards */}
-          <div className="col-span-5 flex flex-col justify-between gap-3.5">
-            {[
-              {
-                label: 'Compilation Speed',
-                value: '8× – 10×',
-                desc: 'Artifacts generated in minutes from Update Set XML metadata.',
-                Icon: Clock,
-                from: '#00c08b',
-                to: '#34d399',
-              },
-              {
-                label: 'Release Overhead',
-                value: '40 – 60%',
-                desc: 'Cuts documentation backlog. Speeds CAB approvals.',
-                Icon: Percent,
-                from: '#34d399',
-                to: '#84cc16',
-              },
-              {
-                label: 'Audit Consistency',
-                value: '100%',
-                desc: 'Zero typos. Zero missing sections. Cross-team template adherence.',
-                Icon: CheckCircle,
-                from: '#00c08b',
-                to: '#84cc16',
-              },
-            ].map((m, i) => (
-              <div
-                key={m.label}
-                className="group relative flex-1 rounded-2xl border border-slate-200 dark:border-[#80b6a1]/15 bg-white/90 dark:bg-[#061613]/80 backdrop-blur-md p-5 flex items-center gap-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:border-[#00c08b]/40 shadow-md animate-fade-in-up overflow-hidden"
-                style={{ animationDelay: `${260 + i * 100}ms` }}
-              >
-                <div
-                  className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-3xl opacity-25 pointer-events-none group-hover:opacity-50 transition-opacity"
-                  style={{ background: m.from }}
-                />
-                <div
-                  className="h-14 w-14 rounded-2xl grid place-items-center text-white shadow-lg flex-shrink-0 relative"
-                  style={{
-                    background: `linear-gradient(135deg, ${m.from}, ${m.to})`,
-                    boxShadow: `0 14px 28px -8px ${m.from}55`,
-                  }}
-                >
-                  <div className="absolute inset-0 rounded-2xl opacity-50" style={{ background: 'radial-gradient(circle at 30% 25%, rgba(255,255,255,0.55) 0%, transparent 50%)' }} />
-                  <m.Icon className="h-7 w-7 text-white relative" strokeWidth={2.4} />
+        {/* Features vs Benefits Symmetric split layout */}
+        <div className="flex-1 grid grid-cols-12 gap-6 lg:gap-8 mt-4 items-stretch overflow-visible pb-3 min-h-[380px] max-h-[460px]">
+          
+          {/* LEFT: THE FEATURES (col-span-6) */}
+          <div 
+            className="col-span-6 rounded-[24px] border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-[#061613]/20 p-5 lg:p-5.5 flex flex-col justify-between relative shadow-sm animate-fade-in-up"
+            style={{ animationDelay: '180ms' }}
+          >
+            <div className="space-y-3 flex-1 flex flex-col justify-between">
+              {/* Header section */}
+              <div className="flex items-center gap-3 border-b border-slate-200/80 dark:border-white/10 pb-2 mb-0.5">
+                <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-[#00c08b] to-[#34d399] grid place-items-center text-white text-[12px] font-black font-mono shadow-lg relative overflow-hidden flex-shrink-0">
+                  <div className="absolute inset-0 bg-white/10 opacity-60 pointer-events-none" />
+                  F
                 </div>
-                <div className="min-w-0 relative">
-                  <span className="block text-[9px] font-mono font-black uppercase tracking-[0.22em] text-[#009e72] dark:text-[#80b6a1]">
-                    {m.label}
-                  </span>
-                  <span
-                    className="text-[22px] font-black leading-tight block mt-0.5"
-                    style={{
-                      backgroundImage: `linear-gradient(110deg, ${m.from}, ${m.to})`,
-                      WebkitBackgroundClip: 'text',
-                      backgroundClip: 'text',
-                      color: 'transparent',
-                      fontFamily: "'Outfit', sans-serif",
-                    }}
-                  >
-                    {m.value}
-                  </span>
-                  <p className="text-[12px] font-bold text-slate-600 dark:text-slate-300 mt-1 leading-snug">
-                    {m.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Right: Velocity Calculator */}
-          <div className="col-span-7 rounded-2xl border-2 border-[#00c08b]/30 bg-gradient-to-br from-white via-white to-[#00c08b]/4 dark:from-[#040e0d] dark:via-[#061613] dark:to-[#00c08b]/8 backdrop-blur-md p-6 flex flex-col justify-between shadow-2xl relative overflow-hidden animate-fade-in-up" style={{ animationDelay: '320ms' }}>
-            <div
-              className="absolute inset-0 opacity-[0.04] dark:opacity-[0.08] pointer-events-none"
-              style={{
-                backgroundImage:
-                  'linear-gradient(rgba(0,192,139,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(0,192,139,0.6) 1px, transparent 1px)',
-                backgroundSize: '24px 24px',
-              }}
-            />
-
-            <div className="relative">
-              {/* Title */}
-              <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-3.5 mb-4">
-                <div className="flex items-center gap-2.5">
-                  <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-[#00c08b] to-[#34d399] grid place-items-center shadow-md shadow-[#00c08b]/20">
-                    <Sparkles className="h-4.5 w-4.5 text-white animate-pulse" strokeWidth={2.5} />
-                  </div>
-                  <div className="leading-tight">
-                    <span className="font-mono text-[10px] sm:text-[10.5px] font-black uppercase tracking-[0.22em] text-slate-500 dark:text-slate-300 block">
-                      Team Velocity Calculator
-                    </span>
-                    <span className="text-[10px] font-black text-[#009e72] dark:text-[#80b6a1] tracking-wider">
-                      tune your team size and sprint cadence
-                    </span>
-                  </div>
-                </div>
-                <span className="font-mono text-[9px] px-2.5 py-1 rounded bg-[#00c08b]/10 border border-[#00c08b]/30 text-[#009e72] dark:text-[#00c08b] font-black uppercase tracking-[0.18em]">
-                  live
+                <span className="text-[17px] font-mono font-black uppercase text-[#009e72] dark:text-[#80b6a1] tracking-[0.2em] leading-none">
+                  Core Features
                 </span>
               </div>
 
-              {/* Inputs */}
-              <div className="grid grid-cols-2 gap-6">
-                {/* Dev slider */}
-                <div className="space-y-2">
-                  <div className="flex justify-between items-baseline">
-                    <span className="flex items-center gap-1.5 text-[12.5px] font-extrabold text-slate-800 dark:text-slate-200">
-                      <Users className="h-3.5 w-3.5 text-[#00c08b]" /> Developers
-                    </span>
-                    <span className="text-[20px] font-mono font-black text-[#00c08b] bg-[#00c08b]/8 border border-[#00c08b]/30 px-2.5 py-0.5 rounded-lg leading-none tabular-nums">
-                      {developers}
-                    </span>
+              {/* Features cards list */}
+              <div className="space-y-3 flex-1 flex flex-col justify-between">
+                
+                {/* Feature 1 */}
+                <div className="p-4 sm:p-4.5 rounded-xl bg-white/95 dark:bg-[#04110e]/85 border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-lg dark:hover:shadow-[#00c08b]/8 hover:shadow-slate-200/30 transition-all duration-300 flex items-start gap-4 shadow-sm relative overflow-hidden group">
+                  <div className="h-11 w-11 rounded-lg bg-gradient-to-br from-[#00c08b]/15 to-[#34d399]/5 dark:from-[#00c08b]/20 dark:to-transparent border border-[#00c08b]/30 grid place-items-center text-[#009e72] dark:text-[#00c08b] group-hover:scale-105 transition-transform flex-shrink-0 shadow-sm relative">
+                    <div className="absolute inset-0 rounded-lg opacity-40 bg-gradient-to-br from-white to-transparent" />
+                    <GitBranch className="h-5 w-5" strokeWidth={2.4} />
                   </div>
-                  <input
-                    type="range"
-                    min={1}
-                    max={20}
-                    step={1}
-                    value={developers}
-                    onChange={(e) => setDevelopers(Number(e.target.value))}
-                    className="w-full h-2.5 rounded-lg appearance-none cursor-pointer accent-[#00c08b]"
-                    style={{
-                      background: `linear-gradient(90deg, #00c08b 0%, #34d399 ${((developers - 1) / 19) * 100}%, rgba(148,163,184,0.18) ${((developers - 1) / 19) * 100}%, rgba(148,163,184,0.18) 100%)`,
-                    }}
-                  />
-                  <div className="flex justify-between text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.22em] font-mono">
-                    <span>1</span>
-                    <span>10</span>
-                    <span>20</span>
+                  <div className="flex-1 space-y-1 leading-snug">
+                    <h4 className="text-[15px] lg:text-[15.5px] font-black text-slate-800 dark:text-white font-sora">
+                      Update Set XML Intelligence
+                    </h4>
+                    <p className="text-[12px] lg:text-[12.5px] font-bold text-slate-500 dark:text-slate-400 leading-relaxed">
+                      AIRA <span className="text-[#00c08b] dark:text-[#34d399] font-extrabold">directly parses</span> closed ServiceNow Update Sets, extracting script includes, system indices, and flow diagrams automatically.
+                    </p>
+                    {/* Glowing micro-badge graphic */}
+                    <div className="inline-flex items-center gap-2 px-2 py-0.5 rounded bg-[#00c08b]/8 border border-[#00c08b]/20 font-mono text-[8px] font-black text-[#009e72] dark:text-[#00c08b] uppercase tracking-wider">
+                      <Sparkles className="h-3 w-3 animate-pulse text-[#00c08b]" /> metadata-extractor: update-set database scans
+                    </div>
                   </div>
                 </div>
 
-                {/* Sprint length */}
-                <div className="space-y-2">
-                  <span className="flex items-center gap-1.5 text-[12.5px] font-extrabold text-slate-800 dark:text-slate-200">
-                    <CalendarClock className="h-3.5 w-3.5 text-[#00c08b]" /> Sprint Duration
-                  </span>
-                  <div className="flex gap-1.5 p-1 rounded-xl bg-slate-100/70 dark:bg-white/[0.04] border border-slate-200 dark:border-white/8">
-                    {[2, 3, 4].map((weeks) => {
-                      const isActive = sprintWeeks === weeks;
-                      return (
-                        <button
-                          key={weeks}
-                          onClick={() => setSprintWeeks(weeks)}
-                          className={`flex-1 py-1.5 rounded-lg text-[10.5px] font-black uppercase tracking-[0.16em] transition-all ${
-                            isActive
-                              ? 'bg-gradient-to-r from-[#00c08b] to-[#34d399] text-white shadow-md shadow-[#00c08b]/25 scale-[1.04]'
-                              : 'text-slate-500 dark:text-slate-400 hover:scale-105'
-                          }`}
-                        >
-                          {weeks} weeks
-                        </button>
-                      );
-                    })}
+                {/* Feature 2 */}
+                <div className="p-4 sm:p-4.5 rounded-xl bg-white/95 dark:bg-[#04110e]/85 border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-lg dark:hover:shadow-[#00c08b]/8 hover:shadow-slate-200/30 transition-all duration-300 flex items-start gap-4 shadow-sm relative overflow-hidden group">
+                  <div className="h-11 w-11 rounded-lg bg-gradient-to-br from-[#34d399]/15 to-[#10b981]/5 dark:from-[#34d399]/20 dark:to-transparent border border-[#34d399]/30 grid place-items-center text-[#34d399] group-hover:scale-105 transition-transform flex-shrink-0 shadow-sm relative">
+                    <div className="absolute inset-0 rounded-lg opacity-40 bg-gradient-to-br from-white to-transparent" />
+                    <FileText className="h-5 w-5" strokeWidth={2.4} />
+                  </div>
+                  <div className="flex-1 space-y-1 leading-snug">
+                    <h4 className="text-[15px] lg:text-[15.5px] font-black text-slate-800 dark:text-white font-sora">
+                      Multi-Doc Auto-Generation
+                    </h4>
+                    <p className="text-[12px] lg:text-[12.5px] font-bold text-slate-500 dark:text-slate-400 leading-relaxed">
+                      Compiles complete <span className="text-[#00c08b] dark:text-[#34d399] font-extrabold">technical design packages</span> including Runbooks, Low-Level Designs (LLD), Test Cases, and CAB Release Notes.
+                    </p>
+                    {/* Glowing micro-badge graphic */}
+                    <div className="inline-flex items-center gap-2 px-2 py-0.5 rounded bg-[#34d399]/8 border border-[#34d399]/20 font-mono text-[8px] font-black text-[#009e72] dark:text-[#34d399] uppercase tracking-wider">
+                      <Cpu className="h-3 w-3 animate-pulse text-[#34d399]" /> compilation-engine: design & compliance doc packs
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Results */}
-              <div className="grid grid-cols-3 gap-3.5 mt-5">
-                {[
-                  {
-                    l: 'Dev Hours Recovered',
-                    v: `${docHoursSaved}h`,
-                    sub: 'rerouted to engineering',
-                    accent: '#00c08b',
-                  },
-                  {
-                    l: 'CAB Velocity',
-                    v: '85% faster',
-                    sub: 'approval acceleration',
-                    accent: '#84cc16',
-                  },
-                  {
-                    l: 'Doc Packs',
-                    v: documentsCreated.toLocaleString(),
-                    sub: 'compliance suites / sprint',
-                    accent: '#34d399',
-                  },
-                ].map((s) => (
-                  <div
-                    key={s.l}
-                    className="p-3.5 rounded-2xl border border-[#00c08b]/25 bg-white/90 dark:bg-[#040e0d]/85 text-center shadow-lg hover:scale-[1.04] hover:-translate-y-0.5 hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
-                  >
-                    <div
-                      className="absolute -top-6 -right-6 w-20 h-20 rounded-full blur-2xl opacity-25"
-                      style={{ background: s.accent }}
-                    />
-                    <span className="block text-[8.5px] font-mono font-black uppercase text-slate-400 dark:text-slate-500 tracking-[0.22em] relative">
-                      {s.l}
-                    </span>
-                    <span
-                      className="text-[28px] font-mono font-black block mt-1.5 leading-none tabular-nums relative"
-                      style={{ color: s.accent }}
-                    >
-                      {s.v}
-                    </span>
-                    <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 mt-1.5 block relative leading-tight">
-                      {s.sub}
-                    </span>
+                {/* Feature 3 */}
+                <div className="p-4 sm:p-4.5 rounded-xl bg-white/95 dark:bg-[#04110e]/85 border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-lg dark:hover:shadow-[#00c08b]/8 hover:shadow-slate-200/30 transition-all duration-300 flex items-start gap-4 shadow-sm relative overflow-hidden group">
+                  <div className="h-11 w-11 rounded-lg bg-gradient-to-br from-[#84cc16]/15 to-[#34d399]/5 dark:from-[#84cc16]/20 dark:to-transparent border border-[#84cc16]/30 grid place-items-center text-[#84cc16] group-hover:scale-105 transition-transform flex-shrink-0 shadow-sm relative">
+                    <div className="absolute inset-0 rounded-lg opacity-40 bg-gradient-to-br from-white to-transparent" />
+                    <ShieldCheck className="h-5 w-5" strokeWidth={2.4} />
                   </div>
-                ))}
-              </div>
-            </div>
+                  <div className="flex-1 space-y-1 leading-snug">
+                    <h4 className="text-[15px] lg:text-[15.5px] font-black text-slate-800 dark:text-white font-sora">
+                      ServiceNow Native Scope
+                    </h4>
+                    <p className="text-[12px] lg:text-[12.5px] font-bold text-slate-500 dark:text-slate-400 leading-relaxed">
+                      Runs <span className="text-[#00c08b] dark:text-[#84cc16] font-extrabold">entirely within native tables</span>. Zero external API handshakes, MID-server dependencies, or compliance exposures.
+                    </p>
+                    {/* Glowing micro-badge graphic */}
+                    <div className="inline-flex items-center gap-2 px-2 py-0.5 rounded bg-[#84cc16]/8 border border-[#84cc16]/20 font-mono text-[8px] font-black text-[#009e72] dark:text-[#84cc16] uppercase tracking-wider">
+                      <Lock className="h-3 w-3 animate-bounce text-[#84cc16]" /> scope-governed: zero network exposure sandbox
+                    </div>
+                  </div>
+                </div>
 
-            {/* Differentiator */}
-            <div className="mt-4 p-3.5 rounded-2xl border border-[#80b6a1]/30 bg-gradient-to-r from-[#80b6a1]/10 to-[#00c08b]/5 dark:from-[#80b6a1]/15 dark:to-[#00c08b]/10 flex items-center gap-3.5 relative overflow-hidden">
-              <div className="h-11 w-11 rounded-xl bg-gradient-to-br from-[#80b6a1] to-[#6b8c80] grid place-items-center text-white flex-shrink-0 shadow-md shadow-[#80b6a1]/25">
-                <GitBranch className="h-6 w-6 text-white" strokeWidth={2.4} />
-              </div>
-              <div className="leading-snug min-w-0 flex-1">
-                <span className="text-[12.5px] font-black text-[#0c1e1c] dark:text-white block">
-                  Enterprise Differentiator · 100% ServiceNow Native
-                </span>
-                <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 leading-snug mt-0.5">
-                  Runs inside Flow Designer & Script Includes. Zero external deps, MID servers, or compliance exposure.
-                </p>
               </div>
             </div>
           </div>
+
+          {/* RIGHT: THE BENEFITS (col-span-6) */}
+          <div 
+            className="col-span-6 rounded-[24px] border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-[#061613]/20 p-5 lg:p-5.5 flex flex-col justify-between relative shadow-sm animate-fade-in-up"
+            style={{ animationDelay: '260ms' }}
+          >
+            <div className="space-y-3 flex-1 flex flex-col justify-between">
+              {/* Header section */}
+              <div className="flex items-center justify-between border-b border-slate-200/80 dark:border-white/10 pb-2 mb-0.5">
+                <div className="flex items-center gap-3 border-b-0">
+                  <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-[#84cc16] to-[#65a30d] grid place-items-center text-white text-[12px] font-black font-mono shadow-lg relative overflow-hidden flex-shrink-0">
+                    <div className="absolute inset-0 bg-white/10 opacity-60 pointer-events-none" />
+                    B
+                  </div>
+                  <span className="text-[17px] font-mono font-black uppercase text-[#009e72] dark:text-[#80b6a1] tracking-[0.2em] leading-none">
+                    Realized Benefits
+                  </span>
+                </div>
+                <span className="font-mono text-[8px] px-2 py-0.5 rounded-md bg-[#00c08b]/15 border border-[#00c08b]/35 text-[#009e72] dark:text-[#00c08b] font-black uppercase tracking-wider">
+                  outcomes
+                </span>
+              </div>
+
+              {/* Benefits cards list */}
+              <div className="space-y-3 flex-1 flex flex-col justify-between">
+                
+                {/* Benefit 1 */}
+                <div className="p-4 sm:p-4.5 rounded-xl bg-white/95 dark:bg-[#04110e]/85 border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-lg dark:hover:shadow-[#00c08b]/8 hover:shadow-slate-200/30 transition-all duration-300 flex items-start gap-4 shadow-sm relative overflow-hidden group">
+                  <div className="h-11 w-11 rounded-lg bg-gradient-to-br from-amber-400/15 to-transparent border border-amber-400/30 grid place-items-center text-amber-500 group-hover:scale-105 transition-transform flex-shrink-0 shadow-sm relative animate-pulse-glow">
+                    <div className="absolute inset-0 rounded-lg opacity-40 bg-gradient-to-br from-white to-transparent" />
+                    <Zap className="h-5 w-5" strokeWidth={2.4} />
+                  </div>
+                  <div className="flex-1 space-y-1 leading-snug">
+                    <h4 className="text-[15px] lg:text-[15.5px] font-black text-slate-800 dark:text-white font-sora">
+                      Engineering Velocity Unlock
+                    </h4>
+                    <p className="text-[12px] lg:text-[12.5px] font-bold text-slate-500 dark:text-slate-400 leading-relaxed">
+                      Freer developer teams from manually writing CAB design sheets. Developers focus <span className="text-amber-600 dark:text-amber-400 font-extrabold">100% on custom code builds</span>.
+                    </p>
+                    {/* Glowing micro-badge graphic */}
+                    <div className="inline-flex items-center gap-2 px-2 py-0.5 rounded bg-amber-400/8 border border-amber-400/20 font-mono text-[8px] font-black text-amber-600 dark:text-amber-400 uppercase tracking-wider">
+                      <Zap className="h-3 w-3 animate-pulse text-amber-500" /> development-speed: developer hours recovered
+                    </div>
+                  </div>
+                </div>
+
+                {/* Benefit 2 */}
+                <div className="p-4 sm:p-4.5 rounded-xl bg-white/95 dark:bg-[#04110e]/85 border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-lg dark:hover:shadow-[#00c08b]/8 hover:shadow-slate-200/30 transition-all duration-300 flex items-start gap-4 shadow-sm relative overflow-hidden group">
+                  <div className="h-11 w-11 rounded-lg bg-gradient-to-br from-rose-400/15 to-transparent border border-rose-400/30 grid place-items-center text-rose-550 group-hover:scale-105 transition-transform flex-shrink-0 shadow-sm relative">
+                    <div className="absolute inset-0 rounded-lg opacity-40 bg-gradient-to-br from-white to-transparent" />
+                    <Activity className="h-5 w-5" strokeWidth={2.4} />
+                  </div>
+                  <div className="flex-1 space-y-1 leading-snug">
+                    <h4 className="text-[15px] lg:text-[15.5px] font-black text-slate-800 dark:text-white font-sora">
+                      Zero CAB Release Backlog
+                    </h4>
+                    <p className="text-[12px] lg:text-[12.5px] font-bold text-slate-500 dark:text-slate-400 leading-relaxed">
+                      Speeds release pipelines by generating <span className="text-rose-600 dark:text-rose-400 font-extrabold">highly structured compliance dossiers</span>, ensuring smooth, error-free approvals.
+                    </p>
+                    {/* Glowing micro-badge graphic */}
+                    <div className="inline-flex items-center gap-2 px-2 py-0.5 rounded bg-rose-400/8 border border-rose-400/20 font-mono text-[8px] font-black text-rose-600 dark:text-rose-400 uppercase tracking-wider">
+                      <Activity className="h-3 w-3 animate-pulse text-rose-500" /> compliance-velocity: approval acceleration
+                    </div>
+                  </div>
+                </div>
+
+                {/* Benefit 3 */}
+                <div className="p-4 sm:p-4.5 rounded-xl bg-white/95 dark:bg-[#04110e]/85 border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-lg dark:hover:shadow-[#00c08b]/8 hover:shadow-slate-200/30 transition-all duration-300 flex items-start gap-4 shadow-sm relative overflow-hidden group">
+                  <div className="h-11 w-11 rounded-lg bg-gradient-to-br from-emerald-400/15 to-transparent border border-emerald-400/30 grid place-items-center text-emerald-555 dark:text-[#34d399] group-hover:scale-105 transition-transform flex-shrink-0 shadow-sm relative">
+                    <div className="absolute inset-0 rounded-lg opacity-40 bg-gradient-to-br from-white to-transparent" />
+                    <ShieldCheck className="h-5 w-5" strokeWidth={2.4} />
+                  </div>
+                  <div className="flex-1 space-y-1 leading-snug">
+                    <h4 className="text-[15px] lg:text-[15.5px] font-black text-slate-800 dark:text-white font-sora">
+                      Perfect template Consistency
+                    </h4>
+                    <p className="text-[12px] lg:text-[12.5px] font-bold text-slate-500 dark:text-slate-400 leading-relaxed">
+                      Guarantees <span className="text-[#009e72] dark:text-[#84cc16] font-extrabold">100% template alignment</span> across all engineering squads, ensuring standard governance and audit readiness.
+                    </p>
+                    {/* Glowing micro-badge graphic */}
+                    <div className="inline-flex items-center gap-2 px-2 py-0.5 rounded bg-[#00c08b]/8 border border-[#00c08b]/20 font-mono text-[8px] font-black text-emerald-600 dark:text-emerald-450 uppercase tracking-wider">
+                      <ShieldCheck className="h-3 w-3 animate-pulse text-[#00c08b] dark:text-[#34d399]" /> standardized-quality: template compliance guaranteed
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-4 pt-3.5 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11.5px] font-bold text-slate-500 dark:text-slate-400 flex-shrink-0">
-          <span>Compiler ensures 100% formatting and compliance adherence.</span>
+        <div className="mt-2 pt-2 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11px] font-bold text-slate-500 dark:text-slate-400 flex-shrink-0">
+          <span>Safe autonomous operations that prioritize production stability above all else.</span>
           <span className="flex items-center gap-1.5 text-[#009e72] dark:text-[#00c08b] font-black">
-            <Zap className="h-4 w-4 animate-pulse" /> 30 – 50 developer hours recovered per sprint.
+            <CheckCircle2 className="h-4 w-4" /> Integrated ServiceNow updates &bull; 100% compliant.
           </span>
         </div>
       </div>

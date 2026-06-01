@@ -83,7 +83,7 @@ export default function App() {
               </div>
             </div>
             <div className="leading-tight">
-              <div className="font-extrabold tracking-tight text-base sm:text-lg text-white">
+              <div className="font-sora font-extrabold tracking-tight text-base sm:text-lg text-white">
                 AI<span className="text-[#00c08b]">RA</span>
               </div>
               <div className="text-[10px] uppercase tracking-[0.22em] text-[#80b6a1]/80 font-bold">
@@ -177,31 +177,31 @@ export default function App() {
               </div>
             </div>
 
-            <div className="absolute -bottom-[28px] left-1/2 -translate-x-1/2 z-50 w-full max-w-[850px] px-4">
-              <div className="flex items-center justify-between gap-2 px-9 py-3 rounded-full bg-[#031513]/95 border border-[#00c08b]/40 shadow-[0_20px_45px_rgba(0,192,139,0.35),inset_0_1.5px_1.5px_rgba(255,255,255,0.15)] backdrop-blur-2xl transition-all duration-300">
+            <div className="absolute -bottom-[20px] left-1/2 -translate-x-1/2 z-50 px-4">
+              <div className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#031513]/95 border border-[#00c08b]/40 shadow-[0_15px_35px_rgba(0,192,139,0.3),inset_0_1px_1px_rgba(255,255,255,0.15)] backdrop-blur-2xl transition-all duration-300">
                 {SLIDES.map((s, i) => {
                   const active = i === current;
+                  const numStr = String(i + 1).padStart(2, '0');
                   return (
                     <button
                       key={i}
                       onClick={() => goTo(i)}
-                      className="group flex flex-col items-center justify-center flex-1 py-0.5 transition-all duration-300 hover:scale-105"
+                      className={`group relative flex items-center justify-center transition-all duration-350 rounded-full ${
+                        active
+                          ? 'bg-gradient-to-r from-[#00c08b] to-[#84cc16] text-white px-3.5 py-1.5 font-bold shadow-[0_0_12px_rgba(0,192,139,0.5)] scale-105'
+                          : 'text-[#80b6a1]/60 hover:text-white px-2.5 py-1 hover:bg-[#00c08b]/10'
+                      }`}
                       aria-label={`Go to slide ${s.name}`}
                     >
-                      <div className="relative flex items-center justify-center w-full">
-                        {active ? (
-                          <div className="h-2 w-20 rounded-full bg-gradient-to-r from-[#00c08b] to-[#84cc16] shadow-[0_0_15px_rgba(0,192,139,0.95)] transition-all duration-300" />
-                        ) : (
-                          <div className="h-2.5 w-2.5 rounded-full bg-[#00c08b]/50 border border-[#00c08b]/35 shadow-[0_0_8px_rgba(0,192,139,0.25)] group-hover:bg-[#00c08b] group-hover:scale-125 transition-all duration-300" />
-                        )}
-                      </div>
-                      {active ? (
-                        <span className="text-[9.5px] tracking-[0.16em] uppercase mt-1.5 transition-all duration-300 font-extrabold text-[#00c08b] animate-fade-in-scale">
+                      <span className="font-mono text-xs tracking-wider">{numStr}</span>
+                      {active && (
+                        <span className="text-[9.5px] tracking-[0.12em] uppercase ml-1.5 font-extrabold text-white animate-fade-in-scale">
                           {SHORT_NAMES[i]}
                         </span>
-                      ) : (
-                        <span className="text-[9.5px] tracking-[0.16em] uppercase mt-1.5 transition-all duration-300 font-extrabold text-transparent select-none">
-                          {SHORT_NAMES[i]}
+                      )}
+                      {!active && (
+                        <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 scale-0 group-hover:scale-100 transition-all duration-200 bg-[#031513] border border-[#00c08b]/40 px-2.5 py-1 rounded-md text-[9px] uppercase font-black tracking-widest text-[#00c08b] whitespace-nowrap shadow-xl pointer-events-none">
+                          {s.name}
                         </span>
                       )}
                     </button>

@@ -155,13 +155,13 @@ export default function SlideDocsOverview() {
   }, [compiling]);
 
   return (
-    <div className="relative h-full w-full overflow-hidden flex flex-col text-white" style={{ background: 'radial-gradient(ellipse 80% 60% at 20% 0%, #062a23 0%, #03110e 55%, #020a08 100%)' }}>
+    <div className="relative h-full w-full overflow-hidden bg-white dark:bg-ink-900 flex flex-col text-slate-800 dark:text-white transition-colors duration-500">
       {/* Brand spotlights */}
-      <div className="absolute top-[-12%] left-[-10%] w-[55%] h-[55%] bg-[#00c08b]/22 rounded-full blur-[140px] pointer-events-none z-0 animate-breathe" />
-      <div className="absolute bottom-[-12%] right-[-10%] w-[50%] h-[50%] bg-[#84cc16]/14 rounded-full blur-[120px] pointer-events-none z-0 animate-pulse-glow" />
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[40%] h-[40%] bg-[#34d399]/8 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-[-12%] left-[-10%] w-[55%] h-[55%] bg-[#00c08b]/15 dark:bg-[#00c08b]/22 rounded-full blur-[140px] pointer-events-none z-0 animate-breathe" />
+      <div className="absolute bottom-[-12%] right-[-10%] w-[50%] h-[50%] bg-[#84cc16]/10 dark:bg-[#84cc16]/14 rounded-full blur-[120px] pointer-events-none z-0 animate-pulse-glow" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[40%] h-[40%] bg-[#34d399]/5 dark:bg-[#34d399]/8 rounded-full blur-[120px] pointer-events-none z-0" />
       <div
-        className="absolute inset-0 opacity-[0.08] z-0 pointer-events-none"
+        className="absolute inset-0 opacity-[0.04] dark:opacity-[0.08] z-0 pointer-events-none"
         style={{
           backgroundImage:
             'linear-gradient(rgba(0,192,139,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(0,192,139,0.6) 1px, transparent 1px)',
@@ -176,15 +176,15 @@ export default function SlideDocsOverview() {
         {/* Header */}
         <div className="flex items-end justify-between gap-6 flex-shrink-0">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#030c0b]/70 backdrop-blur-md border border-[#00c08b]/30 shadow-md animate-fade-in-up">
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-[#030c0b]/70 backdrop-blur-md border border-slate-200 dark:border-[#00c08b]/30 shadow-md animate-fade-in-up">
               <FileText className="h-3.5 w-3.5 text-[#00c08b]" />
-              <span className="font-mono text-[10px] sm:text-[11px] font-black tracking-[0.36em] text-[#84cc16] uppercase">
+              <span className="font-mono text-[10px] sm:text-[11px] font-black tracking-[0.36em] text-[#009e72] dark:text-[#84cc16] uppercase">
                 Use Case 03 · SDLC Documentation Assistant
               </span>
             </div>
             <h2
-              className="text-[2.3rem] sm:text-[2.7rem] font-black tracking-tight leading-[1.04] text-white animate-fade-in-up"
-              style={{ animationDelay: '80ms', fontFamily: "'Outfit', sans-serif" }}
+              className="text-[2.3rem] sm:text-[2.7rem] font-black tracking-tight leading-[1.04] text-[#0c1e1c] dark:text-white animate-fade-in-up"
+              style={{ animationDelay: '80ms', fontFamily: "'Sora', sans-serif" }}
             >
               One click ·{' '}
               <span
@@ -197,16 +197,16 @@ export default function SlideDocsOverview() {
             </h2>
           </div>
 
-          <div className="hidden lg:flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-[#030c0b]/75 border border-[#00c08b]/30 shadow-xl backdrop-blur-md animate-fade-in-up" style={{ animationDelay: '120ms' }}>
+          <div className="hidden lg:flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-[#030c0b]/75 border border-slate-200 dark:border-[#00c08b]/30 shadow-xl backdrop-blur-md animate-fade-in-up" style={{ animationDelay: '120ms' }}>
             <GitBranch className="h-4 w-4 text-[#00c08b]" />
-            <span className="font-mono text-[10px] font-black tracking-[0.22em] uppercase text-[#84cc16]">
+            <span className="font-mono text-[10px] font-black tracking-[0.22em] uppercase text-[#009e72] dark:text-[#84cc16]">
               Update Set · XML-Native
             </span>
           </div>
         </div>
 
         {/* Console */}
-        <div className="flex-1 rounded-2xl border border-white/10 bg-white overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.55),0_0_0_1px_rgba(0,192,139,0.12)] mt-5 flex flex-col relative min-h-[420px] max-h-[510px]">
+        <div className="flex-1 rounded-2xl border border-slate-200 dark:border-white/10 bg-white overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.55),0_0_0_1px_rgba(0,192,139,0.12)] mt-5 flex flex-col relative min-h-[420px] max-h-[510px]">
 
           <div className="px-4 py-1.5 bg-slate-50/80 border-b border-slate-200 flex items-center gap-2 text-[9.5px] font-bold text-slate-400">
             <span>System Update Sets</span>
@@ -343,7 +343,7 @@ export default function SlideDocsOverview() {
                     <div>
                       <span
                         className="text-[15.5px] font-black tracking-tight block leading-none"
-                        style={{ fontFamily: "'Outfit', sans-serif" }}
+                        style={{ fontFamily: "'Sora', sans-serif" }}
                       >
                         AI Documentation Assistant
                       </span>
@@ -577,7 +577,7 @@ export default function SlideDocsOverview() {
                     </div>
                     <span
                       className="text-[13px] font-black text-[#0c1e1c] truncate"
-                      style={{ fontFamily: "'Outfit', sans-serif" }}
+                      style={{ fontFamily: "'Sora', sans-serif" }}
                     >
                       {activePreviewDoc.title}
                     </span>
@@ -597,7 +597,7 @@ export default function SlideDocsOverview() {
                     </span>
                     <span
                       className="text-[15px] font-black text-[#0c1e1c] block mt-1"
-                      style={{ fontFamily: "'Outfit', sans-serif" }}
+                      style={{ fontFamily: "'Sora', sans-serif" }}
                     >
                       {activePreviewDoc.name}
                     </span>
@@ -614,7 +614,7 @@ export default function SlideDocsOverview() {
                           {isTitle ? (
                             <h4
                               className="text-[12px] font-black text-[#009e72]"
-                              style={{ fontFamily: "'Outfit', sans-serif" }}
+                              style={{ fontFamily: "'Sora', sans-serif" }}
                             >
                               {sec}
                             </h4>
@@ -646,13 +646,13 @@ export default function SlideDocsOverview() {
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-4 pt-3.5 border-t border-white/10 flex items-center justify-between text-[11.5px] font-bold text-slate-400 flex-shrink-0">
-          <span className="flex items-center gap-1.5">
-            <ShieldCheck className="h-4 w-4 text-[#00c08b]" />
+        <div className="mt-4 pt-3.5 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11.5px] font-bold text-slate-500 dark:text-slate-400 flex-shrink-0">
+          <span className="flex items-center gap-1.5 text-[#009e72] dark:text-[#00c08b] font-black">
+            <ShieldCheck className="h-4 w-4 text-[#00c08b]" strokeWidth={2.4} />
             Runs natively on Flow Designer & Script Includes — zero external infra.
           </span>
-          <span className="flex items-center gap-1.5 text-[#00c08b] font-black">
-            <CheckCircle2 className="h-4 w-4" />
+          <span className="flex items-center gap-1.5 text-[#009e72] dark:text-[#00c08b] font-black">
+            <CheckCircle2 className="h-4 w-4" strokeWidth={2.4} />
             8 – 10× faster SDLC document generation.
           </span>
         </div>

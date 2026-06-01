@@ -76,7 +76,7 @@ export default function SlideVision() {
   const [hoveredPhase, setHoveredPhase] = useState<number | null>(null);
 
   return (
-    <div className="relative h-full w-full overflow-hidden bg-white dark:bg-ink-900 flex flex-col transition-colors duration-500">
+    <div className="relative h-full w-full overflow-hidden bg-white dark:bg-ink-900 flex flex-col transition-colors duration-500 text-slate-800 dark:text-white">
       {/* Brand spotlights */}
       <div className="absolute top-[-12%] left-[-10%] w-[55%] h-[55%] bg-[#00c08b]/12 dark:bg-[#00c08b]/20 rounded-full blur-[140px] pointer-events-none z-0 animate-breathe" />
       <div className="absolute bottom-[-12%] right-[-10%] w-[50%] h-[50%] bg-[#84cc16]/10 dark:bg-[#84cc16]/14 rounded-full blur-[120px] pointer-events-none z-0 animate-pulse-glow" />
@@ -102,8 +102,8 @@ export default function SlideVision() {
             </span>
           </div>
           <h2
-            className="text-[2.3rem] sm:text-[2.8rem] font-black tracking-tight leading-[1.04] text-[#0c1e1c] dark:text-white animate-fade-in-up"
-            style={{ animationDelay: '80ms', fontFamily: "'Outfit', sans-serif" }}
+            className="text-[2.3rem] sm:text-[2.8rem] font-black tracking-tight leading-[1.04] text-[#0c1e1c] dark:text-white animate-fade-in-up font-sora"
+            style={{ animationDelay: '80ms' }}
           >
             Evolving ServiceNow into an{' '}
             <span
@@ -211,10 +211,9 @@ export default function SlideVision() {
                   {/* Watermark phase number */}
                   <span
                     aria-hidden
-                    className="absolute right-2 -bottom-6 text-[7rem] font-black leading-none select-none pointer-events-none opacity-[0.06] dark:opacity-[0.10]"
+                    className="absolute right-2 -bottom-6 text-[7rem] font-black leading-none select-none pointer-events-none opacity-[0.06] dark:opacity-[0.10] font-sora animate-fade-in"
                     style={{
                       color: p.statusColor,
-                      fontFamily: "'Outfit', sans-serif",
                       letterSpacing: '-0.08em',
                     }}
                   >
@@ -228,8 +227,7 @@ export default function SlideVision() {
                           {p.n}
                         </span>
                         <h3
-                          className="text-[20px] font-black text-[#0c1e1c] dark:text-white leading-tight mt-1"
-                          style={{ fontFamily: "'Outfit', sans-serif" }}
+                          className="text-[20px] font-black text-[#0c1e1c] dark:text-white leading-tight mt-1 font-sora"
                         >
                           {p.title}
                         </h3>
@@ -300,7 +298,7 @@ export default function SlideVision() {
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-4 pt-3.5 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11.5px] font-bold text-slate-500 dark:text-slate-400 flex-shrink-0">
+        <div className="mt-4 pt-3.5 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11.5px] font-bold text-slate-500 dark:text-slate-400 flex-shrink-0 font-sans">
           <span>AIRA · an enterprise-safe operational AI fabric for ServiceNow.</span>
           <span className="flex items-center gap-1.5 text-[#009e72] dark:text-[#00c08b] font-black">
             <ShieldCheck className="h-4 w-4" /> Confidence-governed · 100% Native Orchestration

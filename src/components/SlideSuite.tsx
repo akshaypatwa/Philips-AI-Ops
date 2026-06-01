@@ -141,7 +141,7 @@ function SuiteCard({ card, idx, hovered, setHovered }: {
           aria-hidden
           className="absolute right-4 -top-6 text-[10rem] sm:text-[11rem] font-extrabold leading-none select-none pointer-events-none tracking-tighter transition-all duration-700"
           style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontFamily: "'Sora', sans-serif",
             color: card.accentFrom,
             opacity: isHovered ? 0.32 : 0.15,
             filter: isHovered ? `drop-shadow(0 8px 30px ${card.accentFrom}35)` : 'none',
@@ -172,7 +172,7 @@ function SuiteCard({ card, idx, hovered, setHovered }: {
             {/* Name */}
             <h3
               className="mt-1.5 text-[26px] sm:text-[28px] leading-[1.1] font-black tracking-tight text-[#0c1e1c] dark:text-white"
-              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+              style={{ fontFamily: "'Sora', sans-serif" }}
             >
               {card.name}
             </h3>
@@ -211,7 +211,7 @@ function SuiteCard({ card, idx, hovered, setHovered }: {
               <div
                 className="text-[32px] font-black leading-none tracking-tight"
                 style={{
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontFamily: "'Sora', sans-serif",
                   color: card.accentFrom,
                   textShadow: isHovered ? `0 4px 15px ${card.accentFrom}25` : undefined,
                 }}
@@ -285,7 +285,7 @@ export default function SlideSuite() {
             </div>
             <h2
               className="text-[2.6rem] sm:text-[3rem] lg:text-[3.4rem] font-black tracking-tight leading-[1.02] text-[#0c1e1c] dark:text-white animate-fade-in-up"
-              style={{ animationDelay: '80ms', fontFamily: "'Outfit', sans-serif" }}
+              style={{ animationDelay: '80ms', fontFamily: "'Sora', sans-serif" }}
             >
               Meet{' '}
               <span

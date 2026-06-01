@@ -69,13 +69,13 @@ export default function SlideHealOverview() {
   const prevStage = () => { setIsPlaying(false); setActive((v) => (v - 1 + STAGES.length) % STAGES.length); };
 
   return (
-    <div className="relative h-full w-full overflow-hidden flex flex-col text-white" style={{ background: 'radial-gradient(ellipse 80% 60% at 20% 0%, #062a23 0%, #03110e 55%, #020a08 100%)' }}>
+    <div className="relative h-full w-full overflow-hidden bg-white dark:bg-ink-900 flex flex-col text-slate-800 dark:text-white transition-colors duration-500">
       {/* Brand spotlights */}
-      <div className="absolute top-[-12%] left-[-10%] w-[55%] h-[55%] bg-[#00c08b]/22 rounded-full blur-[140px] pointer-events-none z-0 animate-breathe" />
-      <div className="absolute bottom-[-12%] right-[-10%] w-[50%] h-[50%] bg-[#84cc16]/14 rounded-full blur-[120px] pointer-events-none z-0 animate-pulse-glow" />
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[40%] h-[40%] bg-[#34d399]/8 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-[-12%] left-[-10%] w-[55%] h-[55%] bg-[#00c08b]/15 dark:bg-[#00c08b]/22 rounded-full blur-[140px] pointer-events-none z-0 animate-breathe" />
+      <div className="absolute bottom-[-12%] right-[-10%] w-[50%] h-[50%] bg-[#84cc16]/10 dark:bg-[#84cc16]/14 rounded-full blur-[120px] pointer-events-none z-0 animate-pulse-glow" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[40%] h-[40%] bg-[#34d399]/5 dark:bg-[#34d399]/8 rounded-full blur-[120px] pointer-events-none z-0" />
       <div
-        className="absolute inset-0 opacity-[0.08] z-0 pointer-events-none"
+        className="absolute inset-0 opacity-[0.04] dark:opacity-[0.08] z-0 pointer-events-none"
         style={{
           backgroundImage:
             'linear-gradient(rgba(0,192,139,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(0,192,139,0.6) 1px, transparent 1px)',
@@ -90,18 +90,18 @@ export default function SlideHealOverview() {
         {/* Header */}
         <div className="flex items-end justify-between gap-6 flex-shrink-0">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#030c0b]/70 backdrop-blur-md border border-[#00c08b]/30 shadow-md animate-fade-in-up">
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-[#030c0b]/70 backdrop-blur-md border border-slate-200 dark:border-[#00c08b]/30 shadow-md animate-fade-in-up">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inset-0 rounded-full bg-[#00c08b] animate-pulse-ring" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-[#00c08b]" />
               </span>
-              <span className="font-mono text-[10px] sm:text-[11px] font-black tracking-[0.36em] text-[#84cc16] uppercase">
+              <span className="font-mono text-[10px] sm:text-[11px] font-black tracking-[0.36em] text-[#009e72] dark:text-[#84cc16] uppercase">
                 Use Case 01 · Self-Healing Flow
               </span>
             </div>
             <h2
-              className="text-[2.3rem] sm:text-[2.7rem] font-black tracking-tight leading-[1.04] text-white animate-fade-in-up"
-              style={{ animationDelay: '80ms', fontFamily: "'Outfit', sans-serif" }}
+              className="text-[2.3rem] sm:text-[2.7rem] font-black tracking-tight leading-[1.04] text-[#0c1e1c] dark:text-white animate-fade-in-up"
+              style={{ animationDelay: '80ms', fontFamily: "'Sora', sans-serif" }}
             >
               AIRA{' '}
               <span
@@ -115,10 +115,10 @@ export default function SlideHealOverview() {
           </div>
 
           {/* Player controls */}
-          <div className="flex items-center gap-2 px-2.5 py-2 rounded-2xl bg-[#030c0b]/75 border border-[#00c08b]/25 shadow-xl backdrop-blur-md animate-fade-in-up" style={{ animationDelay: '120ms' }}>
+          <div className="flex items-center gap-2 px-2.5 py-2 rounded-2xl bg-white/90 dark:bg-[#030c0b]/75 border border-slate-200 dark:border-[#00c08b]/25 shadow-xl backdrop-blur-md animate-fade-in-up" style={{ animationDelay: '120ms' }}>
             <button
               onClick={prevStage}
-              className="h-8 w-8 rounded-lg bg-white/[0.04] border border-white/10 grid place-items-center hover:bg-[#00c08b]/15 hover:border-[#00c08b]/40 transition-all"
+              className="h-8 w-8 rounded-lg bg-slate-50 dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 grid place-items-center hover:bg-[#00c08b]/15 hover:border-[#00c08b]/40 transition-all"
               aria-label="Previous stage"
             >
               <ChevronLeft className="h-4 w-4 text-[#00c08b]" strokeWidth={3} />
@@ -141,13 +141,13 @@ export default function SlideHealOverview() {
             </button>
             <button
               onClick={nextStage}
-              className="h-8 w-8 rounded-lg bg-white/[0.04] border border-white/10 grid place-items-center hover:bg-[#00c08b]/15 hover:border-[#00c08b]/40 transition-all"
+              className="h-8 w-8 rounded-lg bg-slate-50 dark:bg-white/[0.04] border border-slate-200 dark:border-white/10 grid place-items-center hover:bg-[#00c08b]/15 hover:border-[#00c08b]/40 transition-all"
               aria-label="Next stage"
             >
               <ChevronRight className="h-4 w-4 text-[#00c08b]" strokeWidth={3} />
             </button>
             <div className="ml-1 px-2.5 py-1 rounded-md bg-[#00c08b]/15 border border-[#00c08b]/35">
-              <span className="font-mono text-[9px] font-black tracking-[0.22em] uppercase text-[#84cc16]">
+              <span className="font-mono text-[9px] font-black tracking-[0.22em] uppercase text-[#009e72] dark:text-[#84cc16]">
                 {active + 1} / {STAGES.length}
               </span>
             </div>
@@ -167,14 +167,13 @@ export default function SlideHealOverview() {
                   <button
                     key={s.n}
                     onClick={() => selectStage(i)}
-                    className="group w-full text-left p-3 rounded-xl border transition-all duration-300 flex items-center gap-3 relative overflow-hidden"
+                    className="group w-full text-left p-3 rounded-xl border transition-all duration-300 flex items-center gap-3 relative overflow-hidden bg-white dark:bg-[#030c0b]/60"
                     style={{
                       borderColor: isSelected
                         ? '#00c08b'
                         : isCompleted
                         ? 'rgba(0,192,139,0.35)'
                         : 'rgba(148,163,184,0.25)',
-                      backgroundColor: '#ffffff',
                       boxShadow: isSelected ? '0 12px 28px -10px rgba(0,192,139,0.5)' : '0 4px 12px -5px rgba(0,0,0,0.05)',
                     }}
                   >
@@ -199,7 +198,7 @@ export default function SlideHealOverview() {
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center justify-between">
-                        <span className={`font-mono text-[8.5px] font-black uppercase tracking-[0.18em] ${isSelected || isCompleted ? 'text-[#009e72]' : 'text-slate-400'}`}>
+                        <span className={`font-mono text-[8.5px] font-black uppercase tracking-[0.18em] ${isSelected || isCompleted ? 'text-[#009e72] dark:text-emerald-400' : 'text-slate-400 dark:text-slate-500'}`}>
                           STAGE {s.n}
                         </span>
                         {isCompleted && (
@@ -211,14 +210,14 @@ export default function SlideHealOverview() {
                       </div>
                       <div
                         className={`text-[13.5px] font-black tracking-tight leading-tight truncate ${
-                          isSelected ? 'text-[#020a08]' : isCompleted ? 'text-slate-800' : 'text-slate-500'
+                          isSelected ? 'text-[#0c1e1c] dark:text-white' : isCompleted ? 'text-slate-800 dark:text-slate-200' : 'text-slate-550 dark:text-slate-400'
                         }`}
-                        style={{ fontFamily: "'Outfit', sans-serif" }}
+                        style={{ fontFamily: "'Sora', sans-serif" }}
                       >
                         {s.name}
                       </div>
                       <div className={`text-[10px] font-bold truncate mt-0.5 ${
-                        isSelected ? 'text-slate-650' : isCompleted ? 'text-slate-600' : 'text-slate-400'
+                        isSelected ? 'text-slate-500 dark:text-slate-350' : isCompleted ? 'text-slate-550 dark:text-slate-400' : 'text-slate-400 dark:text-slate-500'
                       }`}>
                         {s.short}
                       </div>
@@ -231,19 +230,19 @@ export default function SlideHealOverview() {
             {/* Narrative card */}
             <div className="p-3.5 rounded-2xl border border-[#00c08b]/30 bg-gradient-to-br from-[#00c08b]/14 to-[#84cc16]/8 shadow-lg shadow-[#00c08b]/10 relative overflow-hidden backdrop-blur-md">
               <div className="absolute inset-0 shimmer-mask opacity-[0.10] pointer-events-none" />
-              <div className="flex items-center gap-1.5 font-mono text-[8.5px] font-black uppercase text-[#84cc16] tracking-[0.2em] mb-1.5">
+              <div className="flex items-center gap-1.5 font-mono text-[8.5px] font-black uppercase text-[#009e72] dark:text-[#84cc16] tracking-[0.2em] mb-1.5">
                 <Sparkles className="h-3 w-3 animate-pulse" /> Flow State · Live Simulator
               </div>
-              <div key={active} className="text-[11.5px] font-bold text-slate-100 leading-snug animate-fade-in">
+              <div key={active} className="text-[11.5px] font-bold text-slate-800 dark:text-slate-100 leading-snug animate-fade-in">
                 {STAGE_NARRATIVE[active]}
               </div>
             </div>
           </div>
 
           {/* RIGHT: Live workspace screen */}
-          <div className="col-span-8 flex flex-col rounded-2xl border border-white/10 bg-slate-950 overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,192,139,0.12)]">
+          <div className="col-span-8 flex flex-col rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-950 overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,192,139,0.12)]">
             {/* Browser chrome */}
-            <div className="flex items-center justify-between px-4 py-2.5 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-white/10">
+            <div className="flex items-center justify-between px-4 py-2.5 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-slate-800 dark:border-white/10">
               <div className="flex items-center gap-2.5">
                 <div className="flex gap-1.5">
                   <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
@@ -589,9 +588,9 @@ export default function SlideHealOverview() {
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-4 pt-3.5 border-t border-white/10 flex items-center justify-between text-[11.5px] font-bold text-slate-400 flex-shrink-0">
+        <div className="mt-4 pt-3.5 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11.5px] font-bold text-slate-500 dark:text-slate-400 flex-shrink-0">
           <span>Zero ticket toil for repetitive Philips incidents — fully native to ServiceNow.</span>
-          <span className="flex items-center gap-1.5 text-[#00c08b] font-black">
+          <span className="flex items-center gap-1.5 text-[#009e72] dark:text-[#00c08b] font-black">
             <Workflow className="h-4 w-4 animate-pulse" />
             Reactive ticketing → autonomous operations.
           </span>
