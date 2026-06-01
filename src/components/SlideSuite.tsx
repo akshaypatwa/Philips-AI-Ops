@@ -7,11 +7,13 @@ import {
   Sparkles,
   ShieldCheck,
   Brain,
-  Workflow,
   MessageSquare,
   Layers,
   FileCheck2,
   GitBranch,
+  Activity,
+  Zap,
+  BookOpen,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -22,7 +24,8 @@ type Card = {
   tag: string;
   Icon: LucideIcon;
   chips: { label: string; Icon: LucideIcon }[];
-  metric: { value: string; label: string };
+  status: string;
+  statusLabel: string;
   accentFrom: string;
   accentTo: string;
   glow: string;
@@ -37,11 +40,13 @@ const CARDS: Card[] = [
     tag: 'AI clarifies, enriches, recalls and heals incidents — end to end with confidence governance.',
     Icon: Wrench,
     chips: [
-      { label: 'Conversational clarify', Icon: MessageSquare },
-      { label: 'PI enrichment', Icon: Brain },
-      { label: 'Self-heal flows', Icon: Workflow },
+      { label: 'Instant Chat Clarification', Icon: MessageSquare },
+      { label: 'Smart ML Classification', Icon: Brain },
+      { label: 'Live Diagnostic Checks', Icon: Activity },
+      { label: 'Zero-Touch Self-Healing', Icon: Zap },
     ],
-    metric: { value: '25–45%', label: 'MTTR reduction' },
+    status: 'ACTIVE',
+    statusLabel: 'HEAL ENGINE',
     accentFrom: '#00c08b',
     accentTo: '#34d399',
     glow: 'rgba(0,192,139,0.55)',
@@ -54,11 +59,13 @@ const CARDS: Card[] = [
     tag: 'A real-time AI assistant embedded inside the Incident workspace for every support engineer.',
     Icon: Bot,
     chips: [
-      { label: 'Summarize incident', Icon: Sparkles },
-      { label: 'Generate resolution', Icon: FileCheck2 },
-      { label: '7-day memory', Icon: Layers },
+      { label: 'Instant Incident Summaries', Icon: Sparkles },
+      { label: 'AI Resolution Drafting', Icon: FileCheck2 },
+      { label: '7-Day Cross-Shift Memory', Icon: Layers },
+      { label: 'Native Workspace Copilot', Icon: Bot },
     ],
-    metric: { value: '40–70%', label: 'Review effort ↓' },
+    status: 'LOADED',
+    statusLabel: 'OPS COPILOT',
     accentFrom: '#10b981',
     accentTo: '#84cc16',
     glow: 'rgba(132,204,22,0.55)',
@@ -71,11 +78,13 @@ const CARDS: Card[] = [
     tag: 'One click on a closed Update Set generates Design, Runbook, LLD, Test Cases, KT and CAB docs.',
     Icon: FileText,
     chips: [
-      { label: 'Auto Documents Generation', Icon: FileText },
-      { label: 'Standardized Quality Specs', Icon: ShieldCheck },
-      { label: 'Update Set Intelligence', Icon: GitBranch },
+      { label: 'One-Click SDLC Document Generation', Icon: FileText },
+      { label: 'Feature & Update Set Auto Generation', Icon: GitBranch },
+      { label: 'Quality & Compliance Gates', Icon: ShieldCheck },
+      { label: 'Instant Handover Artifacts', Icon: BookOpen },
     ],
-    metric: { value: '8–10×', label: 'Faster docs' },
+    status: 'READY',
+    statusLabel: 'DOCS ENGINE',
     accentFrom: '#34d399',
     accentTo: '#80b6a1',
     glow: 'rgba(128,182,161,0.55)',
@@ -205,21 +214,26 @@ function SuiteCard({ card, idx, hovered, setHovered }: {
             </div>
           </div>
 
-          {/* Footer: metric + CTA */}
-          <div className="mt-5 pt-3.5 border-t border-dashed border-slate-200 dark:border-white/8 flex items-end justify-between">
-            <div className="relative pl-3.5 border-l-2" style={{ borderColor: card.accentFrom }}>
-              <div
-                className="text-[32px] font-black leading-none tracking-tight"
-                style={{
-                  fontFamily: "'Sora', sans-serif",
-                  color: card.accentFrom,
-                  textShadow: isHovered ? `0 4px 15px ${card.accentFrom}25` : undefined,
+          {/* Footer: status + CTA */}
+          <div className="mt-5 pt-3.5 border-t border-dashed border-slate-200 dark:border-white/8 flex items-center justify-between">
+            <div className="flex flex-col items-start gap-1">
+              <span className="text-[8px] font-mono font-bold uppercase tracking-[0.2em] text-[#009e72] dark:text-[#80b6a1]/85">
+                {card.statusLabel}
+              </span>
+              <div 
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100/90 dark:bg-white/[0.04] border shadow-sm transition-all duration-300"
+                style={{ 
+                  borderColor: isHovered ? card.accentFrom : 'rgba(0,192,139,0.15)',
+                  boxShadow: isHovered ? `0 0 12px ${card.accentFrom}20` : undefined
                 }}
               >
-                {card.metric.value}
-              </div>
-              <div className="mt-1 text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-[#80b6a1]/60">
-                {card.metric.label}
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: card.accentFrom }} />
+                  <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: card.accentFrom }} />
+                </span>
+                <span className="font-mono text-[9px] font-black uppercase tracking-[0.2em] text-[#132c2a] dark:text-white leading-none">
+                  {card.status}
+                </span>
               </div>
             </div>
 
