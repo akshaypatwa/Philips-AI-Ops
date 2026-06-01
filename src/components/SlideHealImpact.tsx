@@ -27,9 +27,9 @@ export default function SlideHealImpact() {
         }}
       />
 
-      <div className="relative z-10 flex-1 px-10 sm:px-14 py-5 sm:py-6 flex flex-col justify-between overflow-visible">
+      <div className="relative z-10 flex-1 px-10 sm:px-14 pt-4 pb-4 flex flex-col justify-between overflow-visible">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 flex-shrink-0 pb-1.5 border-b border-slate-100 dark:border-white/5 animate-fade-in-up">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 flex-shrink-0 pb-1 border-b border-slate-100 dark:border-white/5 animate-fade-in-up">
           <div>
             <h2
               className="text-[2.1rem] sm:text-[2.3rem] font-extrabold tracking-tight leading-none text-[#0c1e1c] dark:text-white font-sora"
@@ -52,11 +52,11 @@ export default function SlideHealImpact() {
         </div>
 
         {/* Features vs Benefits Symmetric split layout */}
-        <div className="flex-1 grid grid-cols-12 gap-6 lg:gap-8 mt-3.5 items-stretch overflow-visible pb-3 min-h-[400px] max-h-[480px]">
+        <div className="flex-1 grid grid-cols-12 gap-5 lg:gap-7 mt-1 items-stretch overflow-visible pb-2 min-h-[420px] max-h-[510px]">
           
           {/* LEFT: THE FEATURES (col-span-6) */}
           <div 
-            className="col-span-6 rounded-[24px] border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-[#061613]/20 p-5 lg:p-5.5 flex flex-col justify-between relative shadow-sm animate-fade-in-up"
+            className="col-span-6 rounded-[24px] border border-slate-200/80 dark:border-white/8 bg-gradient-to-br from-slate-50/80 via-white/60 to-emerald-50/30 dark:from-[#061613]/40 dark:via-[#071a16]/30 dark:to-[#00c08b]/[0.04] p-5 lg:p-5.5 flex flex-col justify-between relative shadow-lg animate-fade-in-up backdrop-blur-sm"
             style={{ animationDelay: '180ms' }}
           >
             <div className="space-y-3 flex-1 flex flex-col justify-between">
@@ -75,7 +75,7 @@ export default function SlideHealImpact() {
               <div className="space-y-3 flex-1 flex flex-col justify-between">
                 
                 {/* Feature 1 */}
-                <div className="p-5 rounded-xl bg-gradient-to-br from-white via-white to-emerald-50/15 dark:from-[#04110e]/95 dark:via-[#04110e]/85 dark:to-[#00c08b]/[0.01] border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-0.5 hover:scale-[1.015] hover:shadow-lg dark:hover:shadow-[#00c08b]/8 hover:shadow-slate-200/30 transition-all duration-300 flex items-start gap-4.5 shadow-sm relative overflow-hidden group">
+                <div className="p-5 rounded-xl bg-gradient-to-br from-white via-white to-emerald-50/15 dark:from-[#04110e]/95 dark:via-[#04110e]/85 dark:to-[#00c08b]/[0.01] border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl dark:hover:shadow-[#00c08b]/12 hover:shadow-emerald-200/40 transition-all duration-300 flex items-start gap-6 shadow-[0_4px_16px_-4px_rgba(0,192,139,0.12),0_2px_6px_-2px_rgba(0,0,0,0.06)] relative overflow-hidden group" style={{ transform: 'perspective(800px) rotateX(1deg)', transformStyle: 'preserve-3d' }}>
                   <div className="absolute left-0 inset-y-0 w-1 bg-gradient-to-b from-[#00c08b] to-[#84cc16] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_top_left,rgba(0,192,139,0.06),transparent_60%)] pointer-events-none" />
                   
@@ -98,7 +98,7 @@ export default function SlideHealImpact() {
                 </div>
 
                 {/* Feature 2 */}
-                <div className="p-5 rounded-xl bg-gradient-to-br from-white via-white to-emerald-50/15 dark:from-[#04110e]/95 dark:via-[#04110e]/85 dark:to-[#00c08b]/[0.01] border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-0.5 hover:scale-[1.015] hover:shadow-lg dark:hover:shadow-[#00c08b]/8 hover:shadow-slate-200/30 transition-all duration-300 flex items-start gap-4.5 shadow-sm relative overflow-hidden group">
+                <div className="p-5 rounded-xl bg-gradient-to-br from-white via-white to-emerald-50/15 dark:from-[#04110e]/95 dark:via-[#04110e]/85 dark:to-[#00c08b]/[0.01] border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl dark:hover:shadow-[#00c08b]/12 hover:shadow-emerald-200/40 transition-all duration-300 flex items-start gap-6 shadow-[0_4px_16px_-4px_rgba(0,192,139,0.12),0_2px_6px_-2px_rgba(0,0,0,0.06)] relative overflow-hidden group" style={{ transform: 'perspective(800px) rotateX(1deg)', transformStyle: 'preserve-3d' }}>
                   <div className="absolute left-0 inset-y-0 w-1 bg-gradient-to-b from-[#00c08b] to-[#84cc16] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_top_left,rgba(0,192,139,0.06),transparent_60%)] pointer-events-none" />
 
@@ -121,7 +121,7 @@ export default function SlideHealImpact() {
                 </div>
 
                 {/* Feature 3 */}
-                <div className="p-5 rounded-xl bg-gradient-to-br from-white via-white to-emerald-50/15 dark:from-[#04110e]/95 dark:via-[#04110e]/85 dark:to-[#00c08b]/[0.01] border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-0.5 hover:scale-[1.015] hover:shadow-lg dark:hover:shadow-[#00c08b]/8 hover:shadow-slate-200/30 transition-all duration-300 flex items-start gap-4.5 shadow-sm relative overflow-hidden group">
+                <div className="p-5 rounded-xl bg-gradient-to-br from-white via-white to-emerald-50/15 dark:from-[#04110e]/95 dark:via-[#04110e]/85 dark:to-[#00c08b]/[0.01] border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl dark:hover:shadow-[#00c08b]/12 hover:shadow-emerald-200/40 transition-all duration-300 flex items-start gap-6 shadow-[0_4px_16px_-4px_rgba(0,192,139,0.12),0_2px_6px_-2px_rgba(0,0,0,0.06)] relative overflow-hidden group" style={{ transform: 'perspective(800px) rotateX(1deg)', transformStyle: 'preserve-3d' }}>
                   <div className="absolute left-0 inset-y-0 w-1 bg-gradient-to-b from-[#00c08b] to-[#84cc16] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_top_left,rgba(0,192,139,0.06),transparent_60%)] pointer-events-none" />
 
@@ -149,7 +149,7 @@ export default function SlideHealImpact() {
 
           {/* RIGHT: THE BENEFITS (col-span-6) */}
           <div 
-            className="col-span-6 rounded-[24px] border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-[#061613]/20 p-5 lg:p-5.5 flex flex-col justify-between relative shadow-sm animate-fade-in-up"
+            className="col-span-6 rounded-[24px] border border-slate-200/80 dark:border-white/8 bg-gradient-to-br from-slate-50/80 via-white/60 to-amber-50/20 dark:from-[#061613]/40 dark:via-[#071a16]/30 dark:to-[#84cc16]/[0.04] p-5 lg:p-5.5 flex flex-col justify-between relative shadow-lg animate-fade-in-up backdrop-blur-sm"
             style={{ animationDelay: '260ms' }}
           >
             <div className="space-y-3 flex-1 flex flex-col justify-between">
@@ -173,7 +173,7 @@ export default function SlideHealImpact() {
               <div className="space-y-3 flex-1 flex flex-col justify-between">
                 
                 {/* Benefit 1 */}
-                <div className="p-5 rounded-xl bg-gradient-to-br from-white via-white to-emerald-50/15 dark:from-[#04110e]/95 dark:via-[#04110e]/85 dark:to-[#00c08b]/[0.01] border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-0.5 hover:scale-[1.015] hover:shadow-lg dark:hover:shadow-[#00c08b]/8 hover:shadow-slate-200/30 transition-all duration-300 flex items-start gap-4.5 shadow-sm relative overflow-hidden group">
+                <div className="p-5 rounded-xl bg-gradient-to-br from-white via-white to-emerald-50/15 dark:from-[#04110e]/95 dark:via-[#04110e]/85 dark:to-[#00c08b]/[0.01] border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl dark:hover:shadow-[#00c08b]/12 hover:shadow-emerald-200/40 transition-all duration-300 flex items-start gap-6 shadow-[0_4px_16px_-4px_rgba(0,192,139,0.12),0_2px_6px_-2px_rgba(0,0,0,0.06)] relative overflow-hidden group" style={{ transform: 'perspective(800px) rotateX(1deg)', transformStyle: 'preserve-3d' }}>
                   <div className="absolute left-0 inset-y-0 w-1 bg-gradient-to-b from-[#00c08b] to-[#84cc16] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_top_left,rgba(0,192,139,0.06),transparent_60%)] pointer-events-none" />
 
@@ -196,7 +196,7 @@ export default function SlideHealImpact() {
                 </div>
 
                 {/* Benefit 2 */}
-                <div className="p-5 rounded-xl bg-gradient-to-br from-white via-white to-emerald-50/15 dark:from-[#04110e]/95 dark:via-[#04110e]/85 dark:to-[#00c08b]/[0.01] border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-0.5 hover:scale-[1.015] hover:shadow-lg dark:hover:shadow-[#00c08b]/8 hover:shadow-slate-200/30 transition-all duration-300 flex items-start gap-4.5 shadow-sm relative overflow-hidden group">
+                <div className="p-5 rounded-xl bg-gradient-to-br from-white via-white to-emerald-50/15 dark:from-[#04110e]/95 dark:via-[#04110e]/85 dark:to-[#00c08b]/[0.01] border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl dark:hover:shadow-[#00c08b]/12 hover:shadow-emerald-200/40 transition-all duration-300 flex items-start gap-6 shadow-[0_4px_16px_-4px_rgba(0,192,139,0.12),0_2px_6px_-2px_rgba(0,0,0,0.06)] relative overflow-hidden group" style={{ transform: 'perspective(800px) rotateX(1deg)', transformStyle: 'preserve-3d' }}>
                   <div className="absolute left-0 inset-y-0 w-1 bg-gradient-to-b from-[#00c08b] to-[#84cc16] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_top_left,rgba(0,192,139,0.06),transparent_60%)] pointer-events-none" />
 
@@ -219,7 +219,7 @@ export default function SlideHealImpact() {
                 </div>
 
                 {/* Benefit 3 */}
-                <div className="p-5 rounded-xl bg-gradient-to-br from-white via-white to-emerald-50/15 dark:from-[#04110e]/95 dark:via-[#04110e]/85 dark:to-[#00c08b]/[0.01] border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-0.5 hover:scale-[1.015] hover:shadow-lg dark:hover:shadow-[#00c08b]/8 hover:shadow-slate-200/30 transition-all duration-300 flex items-start gap-4.5 shadow-sm relative overflow-hidden group">
+                <div className="p-5 rounded-xl bg-gradient-to-br from-white via-white to-emerald-50/15 dark:from-[#04110e]/95 dark:via-[#04110e]/85 dark:to-[#00c08b]/[0.01] border border-slate-200 dark:border-[#00c08b]/15 hover:border-[#00c08b]/40 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl dark:hover:shadow-[#00c08b]/12 hover:shadow-emerald-200/40 transition-all duration-300 flex items-start gap-6 shadow-[0_4px_16px_-4px_rgba(0,192,139,0.12),0_2px_6px_-2px_rgba(0,0,0,0.06)] relative overflow-hidden group" style={{ transform: 'perspective(800px) rotateX(1deg)', transformStyle: 'preserve-3d' }}>
                   <div className="absolute left-0 inset-y-0 w-1 bg-gradient-to-b from-[#00c08b] to-[#84cc16] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_top_left,rgba(0,192,139,0.06),transparent_60%)] pointer-events-none" />
 
@@ -248,7 +248,7 @@ export default function SlideHealImpact() {
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-2.5 pt-2 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11.5px] font-bold text-slate-500 dark:text-slate-400 flex-shrink-0">
+        <div className="mt-1.5 pt-1.5 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11.5px] font-bold text-slate-500 dark:text-slate-400 flex-shrink-0">
           <span>Safe autonomous operations that prioritize production stability above all else.</span>
           <span className="flex items-center gap-1.5 text-[#009e72] dark:text-[#00c08b] font-black">
             <CheckCircle2 className="h-4 w-4" /> Native ServiceNow workflows &bull; 100% compliant.
