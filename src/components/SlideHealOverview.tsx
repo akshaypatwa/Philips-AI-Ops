@@ -35,11 +35,11 @@ const STAGES: Stage[] = [
 ];
 
 const STAGE_NARRATIVE = [
-  'Akshay Patwa raises an incident on the Philips Service Portal. The description "Unable to access incident" is vague — AIRA takes over.',
+  'Akshay Patwa raises an incident on the Philips Service Portal. The description "Unable to access Incident Tickets" is vague — AIRA takes over.',
   'AIRA intercepts in real time and posts six diagnostic questions directly on the portal to gather structured context.',
-  'Akshay replies on the portal with exact parameters: scoped-app error, office network, blank screen, blocking sprint review.',
-  'AIRA aggregates the chat, fires two Predictive Intelligence models and three diagnostic scripts to triangulate the cause.',
-  'The GenAI LLM reasons over the workspace context, drafts resolution notes, updates the ticket, and closes the incident — autonomously.',
+  'Akshay replies on the portal with exact parameters: blank page on incident management, affecting only him, not on VPN, changed browser/cache.',
+  'AIRA aggregates the chat, fires two Predictive Intelligence models and three diagnostic scripts to check ACL roles and scope restrictions.',
+  'The GenAI LLM reasons over the context, routes the ticket to ServiceNow platform support for ACL correction, updates resolution notes, and closes the incident.'
 ];
 
 export default function SlideHealOverview() {
@@ -85,7 +85,7 @@ export default function SlideHealOverview() {
         }}
       />
 
-      <div className="relative z-10 flex-1 px-10 sm:px-14 py-6 flex flex-col justify-between overflow-hidden">
+      <div className="relative z-10 flex-1 px-10 sm:px-14 py-6 flex flex-col justify-between overflow-hidden font-sans">
 
         {/* Header */}
         <div className="flex items-end justify-between gap-6 flex-shrink-0">
@@ -100,8 +100,8 @@ export default function SlideHealOverview() {
               </span>
             </div>
             <h2
-              className="text-[2.3rem] sm:text-[2.7rem] font-black tracking-tight leading-[1.04] text-[#0c1e1c] dark:text-white animate-fade-in-up"
-              style={{ animationDelay: '80ms', fontFamily: "'Sora', sans-serif" }}
+              className="text-[2.3rem] sm:text-[2.7rem] font-black tracking-tight leading-[1.04] text-[#0c1e1c] dark:text-white animate-fade-in-up font-sora"
+              style={{ animationDelay: '80ms' }}
             >
               AIRA{' '}
               <span
@@ -256,12 +256,12 @@ export default function SlideHealOverview() {
               </div>
               <div className="flex items-center gap-2 font-mono text-[9px] font-black">
                 <span className="text-[#00c08b] px-2 py-0.5 rounded bg-[#00c08b]/15 border border-[#00c08b]/35">
-                  INC4881324
+                  INC4881330
                 </span>
                 <span className="text-slate-400 uppercase tracking-[0.15em]">
                   STATE:{' '}
                   <span className={active === 4 ? 'text-[#00c08b]' : 'text-slate-350'}>
-                    {active === 4 ? 'RESOLVED' : 'NEW'}
+                    {active === 4 ? 'RESOLVED' : 'IN PROGRESS'}
                   </span>
                 </span>
               </div>
@@ -274,14 +274,14 @@ export default function SlideHealOverview() {
               {active <= 2 && (
                 <div key={`chat-${active}`} className="grid grid-cols-12 gap-4 h-full animate-fade-in">
                   <div className="col-span-8 flex flex-col bg-white rounded-2xl border border-slate-200 p-3.5 shadow-sm overflow-hidden">
-                    <div className="flex-1 overflow-auto space-y-3 pr-1 slide-scroll text-[12px]">
-                      <div className="px-3 py-2 bg-[#00c08b]/8 border border-[#00c08b]/20 rounded-xl text-[11.5px] font-bold text-[#009e72] flex items-center justify-between gap-3">
+                    <div className="flex-1 overflow-auto space-y-3 pr-1 slide-scroll text-[11px] leading-snug">
+                      <div className="px-3 py-2 bg-[#00c08b]/8 border border-[#00c08b]/20 rounded-xl text-[11px] font-bold text-[#009e72] flex items-center justify-between gap-3">
                         <div className="flex items-center gap-2 min-w-0">
                           <Activity className="h-3.5 w-3.5 text-[#00c08b] flex-shrink-0" />
-                          <span className="truncate">Incident: <span className="font-extrabold text-slate-900">Unable to access incident</span></span>
+                          <span className="truncate">Incident: <span className="font-extrabold text-slate-900">Unable to access Incident Tickets</span></span>
                         </div>
-                        <span className="font-mono text-[8.5px] font-black uppercase tracking-widest px-2 py-0.5 rounded bg-[#00c08b]/10 border border-[#00c08b]/20 text-[#009e72] flex-shrink-0">
-                          P3 · NEW
+                        <span className="font-mono text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded bg-amber-50 border border-amber-200 text-amber-700 flex-shrink-0">
+                          P3 · IN PROGRESS
                         </span>
                       </div>
 
@@ -289,11 +289,11 @@ export default function SlideHealOverview() {
                         <div className="h-7 w-7 rounded-full bg-slate-200 border border-slate-300 grid place-items-center text-slate-600 font-mono text-[10px] font-black flex-shrink-0">
                           AP
                         </div>
-                        <div className="bg-slate-100 border border-slate-200 rounded-2xl rounded-tl-none p-3 font-semibold text-slate-800 leading-snug max-w-[88%]">
+                        <div className="bg-slate-100 border border-slate-200 rounded-2xl rounded-tl-none p-3 font-bold text-slate-800 max-w-[88%]">
                           <span className="block text-[8px] font-black text-slate-500 uppercase tracking-wider mb-0.5">
                             Akshay Patwa · just now
                           </span>
-                          "Unable to access incident"
+                          "Unable to access Incident Tickets"
                         </div>
                       </div>
 
@@ -303,18 +303,23 @@ export default function SlideHealOverview() {
                             <Sparkles className="h-3.5 w-3.5 text-white" strokeWidth={2.6} />
                             <span className="absolute inset-0 rounded-full ring-2 ring-[#00c08b]/30 animate-pulse-ring" />
                           </div>
-                          <div className="bg-[#00c08b]/5 text-slate-800 rounded-2xl rounded-tl-none p-3.5 font-bold leading-relaxed border border-[#00c08b]/25 shadow-sm max-w-[88%] relative overflow-hidden">
-                            <span className="block text-[8.5px] font-black text-[#009e72] uppercase tracking-[0.18em] mb-1.5 flex items-center gap-1.5">
+                          <div className="bg-[#00c08b]/5 text-slate-800 rounded-2xl rounded-tl-none p-3 border border-[#00c08b]/25 shadow-sm max-w-[90%] relative overflow-hidden">
+                            <span className="block text-[8px] font-black text-[#009e72] uppercase tracking-[0.18em] mb-1 flex items-center gap-1.5">
                               <Sparkles className="h-3 w-3" /> AIRA · Support Assistant
                             </span>
-                            <span className="text-[11.5px] text-slate-900">Hi Akshay — to accelerate resolution, please answer:</span>
-                            <ol className="list-decimal list-inside mt-1.5 space-y-1 text-slate-700 font-semibold text-[10.5px]">
-                              <li>Which ServiceNow module are you trying to access?</li>
-                              <li>What exactly happens — error, blank screen, slow load?</li>
-                              <li>Is this only for you, or your whole team?</li>
-                              <li>Office network, VPN, or other environment?</li>
-                              <li>Any troubleshooting already attempted?</li>
-                              <li>Is it blocking business operations / deadlines?</li>
+                            <span className="text-[11px] text-slate-900 font-bold block mb-1">
+                              Hi Akshay Patwa ,
+                            </span>
+                            <span className="text-[11px] text-slate-800 leading-normal block">
+                              I’m AIRA, your AI support assistant. To help accelerate the analysis and identify the most accurate resolution for your incident, please provide the following details:
+                            </span>
+                            <ol className="list-decimal list-outside mt-1.5 space-y-1 text-slate-700 font-semibold text-[10px] leading-relaxed pl-1">
+                              <li>Which specific module or section of ServiceNow is showing the access issue?</li>
+                              <li>What exactly happens when you try to access the incident tickets (e.g., error message, blank page, slow response)?</li>
+                              <li>Is this issue affecting only you or multiple users in your team?</li>
+                              <li>Are you connected via corporate network, VPN, or remote access when the issue occurs?</li>
+                              <li>Has any troubleshooting been attempted so far (e.g., browser change, cache clear, re-login)?</li>
+                              <li>Is there any immediate business impact or delay caused due to this access issue?</li>
                             </ol>
                           </div>
                         </div>
@@ -325,54 +330,54 @@ export default function SlideHealOverview() {
                           <div className="h-7 w-7 rounded-full bg-slate-200 border border-slate-300 grid place-items-center text-slate-600 font-mono text-[10px] font-black flex-shrink-0">
                             AP
                           </div>
-                          <div className="bg-slate-100 border border-slate-200 rounded-2xl rounded-tl-none p-3 font-bold text-slate-800 leading-snug max-w-[88%]">
+                          <div className="bg-slate-100 border border-slate-200 rounded-2xl rounded-tl-none p-3 font-bold text-slate-800 max-w-[88%]">
                             <span className="block text-[8px] font-black text-slate-500 uppercase tracking-wider mb-1">
                               Akshay Patwa · just now
                             </span>
-                            <div className="space-y-0.5 text-[10.5px] text-slate-700">
-                              <div>1. Incident workspace list view.</div>
-                              <div>2. Blank screen + scoped-app permission error.</div>
-                              <div>3. Only me — teammates fine.</div>
-                              <div>4. Office intranet, New York.</div>
-                              <div>5. Chrome + Safari + cleared cache. No change.</div>
-                              <div>6. Yes — blocking sprint ticket review.</div>
+                            <div className="space-y-1 text-[10px] text-slate-700 leading-normal">
+                              <div>1. Which specific module or section of ServiceNow is showing the access issue? <div className="text-slate-900 font-extrabold pl-3 mt-0.5">Incident management</div></div>
+                              <div>2. What exactly happens when you try to access the incident tickets (e.g., error message, blank page, slow response)? <div className="text-slate-900 font-extrabold pl-3 mt-0.5">Permission error and blank page</div></div>
+                              <div>3. Is this issue affecting only you or multiple users in your team? <div className="text-slate-900 font-extrabold pl-3 mt-0.5">Its affecting me only</div></div>
+                              <div>4. Are you connected via corporate network, VPN, or remote access when the issue occurs? <div className="text-slate-900 font-extrabold pl-3 mt-0.5">not connected to VPN or remote access</div></div>
+                              <div>5. Has any troubleshooting been attempted so far (e.g., browser change, cache clear, re-login)? <div className="text-slate-900 font-extrabold pl-3 mt-0.5">Yes, I changed browser, cleared cache and re-logged in</div></div>
+                              <div>6. Is there any immediate business impact or delay caused due to this access issue? <div className="text-slate-900 font-extrabold pl-3 mt-0.5">no</div></div>
                             </div>
                           </div>
                         </div>
                       )}
                     </div>
 
-                    <div className="flex items-center gap-2 border-t border-slate-250 pt-2.5 mt-2">
+                    <div className="flex items-center gap-2 border-t border-slate-200 pt-2.5 mt-2">
                       <input
                         type="text"
                         readOnly
                         placeholder={active === 2 ? 'Reply sent.' : 'Type your reply…'}
-                        className="flex-1 bg-white border border-slate-200 rounded-xl px-3 py-2 text-[11.5px] font-semibold outline-none text-slate-800 placeholder-slate-400"
+                        className="flex-1 bg-white border border-slate-200 rounded-xl px-3 py-2 text-[11px] font-semibold outline-none text-slate-800 placeholder-slate-400"
                       />
-                      <button className="h-8 px-4 rounded-xl bg-gradient-to-r from-[#00c08b] to-[#34d399] text-white font-black text-[10px] uppercase tracking-[0.15em] flex items-center justify-center shadow-md shadow-[#00c08b]/25">
+                      <button className="h-8 px-4 rounded-xl bg-gradient-to-r from-[#00c08b] to-[#34d399] text-white font-black text-[9px] uppercase tracking-[0.15em] flex items-center justify-center shadow-md shadow-[#00c08b]/25">
                         Send
                       </button>
                     </div>
                   </div>
 
-                  <div className="col-span-4 bg-white border border-slate-200 rounded-2xl p-3.5 flex flex-col justify-between text-[11.5px] shadow-sm">
-                    <div className="space-y-2.5">
-                      <h4 className="font-mono text-[8.5px] font-black text-slate-500 uppercase border-b border-slate-200 pb-2 mb-2 tracking-[0.18em]">
+                  <div className="col-span-4 bg-white border border-slate-200 rounded-2xl p-3 flex flex-col justify-between text-[11px] shadow-sm">
+                    <div className="space-y-2">
+                      <h4 className="font-mono text-[8px] font-black text-slate-500 uppercase border-b border-slate-200 pb-2 mb-2 tracking-[0.18em]">
                         Ticket Details
                       </h4>
                       {[
-                        { l: 'Number', v: 'INC4881324', mono: true },
-                        { l: 'State', v: 'New', pill: 'amber' },
-                        { l: 'Short description', v: 'Unable to access incident' },
+                        { l: 'Number', v: 'INC4881330', mono: true },
+                        { l: 'State', v: 'In Progress', pill: 'amber' },
+                        { l: 'Short description', v: 'Unable to access Incident Tickets' },
                         { l: 'Service', v: 'SERVICENOW', mono: true },
                         { l: 'Affected User', v: 'Akshay Patwa' },
                       ].map((row) => (
-                        <div key={row.l}>
-                          <span className="block text-[8px] font-black text-slate-500 uppercase tracking-wider">
+                        <div key={row.l} className="space-y-0.5">
+                          <span className="block text-[7.5px] font-black text-slate-400 uppercase tracking-wider">
                             {row.l}
                           </span>
                           {row.pill === 'amber' ? (
-                            <span className="inline-block mt-0.5 font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded text-[10.5px] border border-amber-250">
+                            <span className="inline-block font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded text-[10px] border border-amber-200">
                               {row.v}
                             </span>
                           ) : (
@@ -384,8 +389,8 @@ export default function SlideHealOverview() {
                       ))}
                     </div>
 
-                    <div className="p-2.5 bg-[#00c08b]/5 border border-[#00c08b]/20 rounded-xl text-[10px] leading-relaxed text-slate-650 font-semibold mt-3">
-                      <span className="font-black text-[#009e72] block mb-1 font-mono text-[8.5px] uppercase tracking-[0.18em]">
+                    <div className="p-2.5 bg-[#00c08b]/5 border border-[#00c08b]/20 rounded-xl text-[9px] leading-relaxed text-slate-600 font-semibold mt-3">
+                      <span className="font-black text-[#009e72] block mb-0.5 font-mono text-[8px] uppercase tracking-[0.18em]">
                         AIRA Active
                       </span>
                       Conversational clarification running on portal.
@@ -398,30 +403,30 @@ export default function SlideHealOverview() {
               {active === 3 && (
                 <div className="grid grid-cols-12 gap-4 h-full animate-fade-in text-slate-800">
                   <div className="col-span-12 flex items-center justify-between pb-2 border-b border-slate-200">
-                    <span className="text-[12.5px] font-black text-slate-800 uppercase tracking-[0.16em] flex items-center gap-2">
+                    <span className="text-[12px] font-black text-slate-800 uppercase tracking-[0.16em] flex items-center gap-2">
                       <Cpu className="h-4 w-4 text-[#009e72]" /> Model Execution & Diagnostic Scripts
                     </span>
                     <span className="font-mono text-[9px] px-2 py-0.5 rounded bg-[#00c08b]/10 border border-[#00c08b]/30 text-[#009e72] animate-pulse font-black tracking-[0.18em] uppercase">
-                      Harvesting…
+                      Triangulating…
                     </span>
                   </div>
 
                   <div className="col-span-6 p-3.5 bg-white border border-slate-200 rounded-2xl space-y-2.5 shadow-md shadow-slate-100/50 flex flex-col">
                     <div className="flex justify-between items-center border-b border-slate-150 pb-1.5">
-                      <span className="text-[11px] font-black text-[#009e72] flex items-center gap-1.5 font-mono tracking-[0.14em] uppercase">
+                      <span className="text-[10px] font-black text-[#009e72] flex items-center gap-1.5 font-mono tracking-[0.14em] uppercase">
                         <History className="h-4 w-4" /> Model 1 · Similar Incidents
                       </span>
-                      <span className="text-[8.5px] font-mono font-black text-slate-500 uppercase tracking-[0.18em]">Top 3</span>
+                      <span className="text-[8px] font-mono font-black text-slate-500 uppercase tracking-[0.18em]">Top 3 Matches</span>
                     </div>
-                    <div className="space-y-1.5 text-[11px] flex-1">
+                    <div className="space-y-1.5 text-[10.5px] flex-1">
                       {[
-                        { id: 'INC0038421', t: 'ACL checks failure · user role sync', m: 94, tone: 'high' },
-                        { id: 'INC0028162', t: 'Scoped app user access denial', m: 86, tone: 'mid' },
-                        { id: 'INC0019281', t: 'Stale cache record · user session', m: 81, tone: 'low' },
+                        { id: 'INC0038421', t: 'Access permissions issue likely due to ACL', m: 94, tone: 'high' },
+                        { id: 'INC0028162', t: 'Scoped application restriction - blank page', m: 86, tone: 'mid' },
+                        { id: 'INC0019281', t: 'Permission error despite active ITIL role', m: 81, tone: 'low' },
                       ].map((r) => (
                         <div
                           key={r.id}
-                          className="px-2.5 py-2 rounded-lg bg-slate-50/80 border border-slate-200 flex justify-between items-center font-bold text-slate-700 gap-3 relative overflow-hidden"
+                          className="px-2.5 py-1.5 rounded-lg bg-slate-50/80 border border-slate-200 flex justify-between items-center font-bold text-slate-700 gap-3 relative overflow-hidden"
                         >
                           <span
                             className="absolute inset-y-0 left-0"
@@ -434,7 +439,7 @@ export default function SlideHealOverview() {
                             <span className="font-mono font-black text-[#009e72]">{r.id}</span> — {r.t}
                           </span>
                           <span
-                            className="relative text-[9.5px] font-mono font-black flex-shrink-0"
+                            className="relative text-[9px] font-mono font-black flex-shrink-0"
                             style={{ color: r.tone === 'high' ? '#009e72' : r.tone === 'mid' ? '#84cc16' : '#80b6a1' }}
                           >
                             {r.m}% MATCH
@@ -446,40 +451,40 @@ export default function SlideHealOverview() {
 
                   <div className="col-span-6 p-3.5 bg-white border border-slate-200 rounded-2xl space-y-2.5 shadow-md shadow-slate-100/50 flex flex-col">
                     <div className="flex justify-between items-center border-b border-slate-150 pb-1.5">
-                      <span className="text-[11px] font-black text-[#009e72] flex items-center gap-1.5 font-mono tracking-[0.14em] uppercase">
+                      <span className="text-[10px] font-black text-[#009e72] flex items-center gap-1.5 font-mono tracking-[0.14em] uppercase">
                         <Database className="h-4 w-4" /> Model 2 · Field Classifier
                       </span>
-                      <span className="text-[8.5px] font-mono font-black text-slate-500 uppercase tracking-[0.18em]">Predictions</span>
+                      <span className="text-[8px] font-mono font-black text-slate-500 uppercase tracking-[0.18em]">Predictions</span>
                     </div>
-                    <div className="space-y-1.5 text-[11px] flex-1">
+                    <div className="space-y-1.5 text-[10.5px] flex-1">
                       {[
                         { l: 'Category', v: 'Application', c: 95 },
-                        { l: 'Subcategory', v: 'ServiceNow', c: 91 },
+                        { l: 'Subcategory', v: '-- None --', c: 91 },
                         { l: 'Configuration Item', v: 'Incident Management', c: 96 },
                       ].map((r) => (
-                        <div key={r.l} className="px-2.5 py-2 rounded-lg bg-slate-50/80 border border-slate-200 flex justify-between items-center gap-3">
+                        <div key={r.l} className="px-2.5 py-1.5 rounded-lg bg-slate-50/80 border border-slate-200 flex justify-between items-center gap-3">
                           <span className="text-slate-500 font-bold flex-shrink-0">{r.l}</span>
                           <span className="font-black text-slate-800 truncate">
                             {r.v}{' '}
-                            <span className="text-[9px] font-mono text-[#009e72] font-black">({r.c}%)</span>
+                            <span className="text-[8.5px] font-mono text-[#009e72] font-black">({r.c}%)</span>
                           </span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="col-span-12 p-3.5 bg-white border border-slate-200 rounded-2xl shadow-md shadow-slate-100/50">
-                    <div className="flex justify-between items-center border-b border-slate-150 pb-1.5 mb-2.5">
-                      <span className="text-[11px] font-black text-[#009e72] flex items-center gap-1.5 font-mono tracking-[0.14em] uppercase">
-                        <Terminal className="h-4 w-4" /> Diagnostic Scripts · Back-end
+                  <div className="col-span-12 p-3 bg-white border border-slate-200 rounded-2xl shadow-md shadow-slate-100/50">
+                    <div className="flex justify-between items-center border-b border-slate-150 pb-1.5 mb-2">
+                      <span className="text-[10px] font-black text-[#009e72] flex items-center gap-1.5 font-mono tracking-[0.14em] uppercase">
+                        <Terminal className="h-4 w-4" /> Diagnostic Scripts · Back-end Checks
                       </span>
-                      <span className="text-[8.5px] font-mono font-black text-slate-500 uppercase tracking-[0.18em]">3 executed</span>
+                      <span className="text-[8px] font-mono font-black text-slate-500 uppercase tracking-[0.18em]">3 executed</span>
                     </div>
-                    <div className="grid grid-cols-3 gap-2.5 text-[10.5px] font-bold">
+                    <div className="grid grid-cols-3 gap-2.5 text-[10px] font-bold">
                       {[
-                        { l: 'Active User Check', s: 'ACTIVE · OK', tone: 'ok' },
-                        { l: 'Support Group Member', s: 'WT Apps · YES', tone: 'ok' },
-                        { l: 'itil_admin role sync', s: 'MISSING · FAIL', tone: 'fail' },
+                        { l: 'Active Account Check', s: 'ACTIVE · OK', tone: 'ok' },
+                        { l: 'ITIL & Admin Roles Check', s: 'PRESENT · YES', tone: 'ok' },
+                        { l: 'ACL / Scoped Restrictions', s: 'DETECTED · FAIL', tone: 'fail' },
                       ].map((row) => (
                         <div
                           key={row.l}
@@ -491,7 +496,7 @@ export default function SlideHealOverview() {
                         >
                           <span className="text-slate-500 truncate">{row.l}</span>
                           <span
-                            className={`font-mono font-black text-[10px] ${row.tone === 'fail' ? 'text-rose-600 animate-pulse' : 'text-[#009e72]'}`}
+                            className={`font-mono font-black text-[9.5px] ${row.tone === 'fail' ? 'text-rose-600 animate-pulse' : 'text-[#009e72]'}`}
                           >
                             {row.s}
                           </span>
@@ -500,13 +505,13 @@ export default function SlideHealOverview() {
                     </div>
                   </div>
 
-                  <div className="col-span-12 px-3.5 py-2.5 bg-gradient-to-r from-[#00c08b] via-[#34d399] to-[#84cc16] rounded-xl flex items-center justify-between font-black text-[12px] text-white shadow-lg shadow-[#00c08b]/25">
+                  <div className="col-span-12 px-3.5 py-2 bg-gradient-to-r from-[#00c08b] via-[#34d399] to-[#84cc16] rounded-xl flex items-center justify-between font-black text-[11px] text-white shadow-lg shadow-[#00c08b]/25">
                     <span className="flex items-center gap-2">
                       <Sparkles className="h-4 w-4 animate-pulse" />
-                      Aggregated context handed off to LLM Engine
+                      Aggregated structured context forwarded to LLM Reasoning Engine
                     </span>
-                    <span className="font-mono text-[9.5px] bg-black/15 px-2 py-0.5 rounded tracking-[0.16em] uppercase">
-                      conf 0.94
+                    <span className="font-mono text-[9px] bg-black/15 px-2 py-0.5 rounded tracking-[0.16em] uppercase">
+                      conf 0.96
                     </span>
                   </div>
                 </div>
@@ -514,71 +519,68 @@ export default function SlideHealOverview() {
 
               {/* STAGE 5: LLM resolution */}
               {active === 4 && (
-                <div className="grid grid-cols-12 gap-3.5 h-full animate-fade-in text-slate-800">
-                  <div className="col-span-12 flex items-center justify-between border-b border-slate-200 pb-2">
-                    <span className="text-[12.5px] font-black text-slate-800 uppercase tracking-[0.16em] flex items-center gap-2">
-                      <Sparkles className="h-4 w-4 text-[#009e72]" /> LLM Reasoner & ServiceNow Update
+                <div className="grid grid-cols-12 gap-3 h-full animate-fade-in text-slate-800">
+                  <div className="col-span-12 flex items-center justify-between border-b border-slate-200 pb-1.5">
+                    <span className="text-[12px] font-black text-slate-800 uppercase tracking-[0.16em] flex items-center gap-2">
+                      <Sparkles className="h-4 w-4 text-[#009e72]" /> GenAI LLM Reasoner & ServiceNow Updates
                     </span>
-                    <span className="font-mono text-[9px] px-2 py-0.5 rounded bg-[#00c08b]/10 border border-[#00c08b]/30 text-[#009e72] font-black tracking-[0.18em] uppercase animate-pulse">
-                      Resolved
+                    <span className="font-mono text-[8.5px] px-2 py-0.5 rounded bg-[#00c08b]/10 border border-[#00c08b]/30 text-[#009e72] font-black tracking-[0.18em] uppercase">
+                      Auto-Updated
                     </span>
                   </div>
 
-                  <div className="col-span-12 p-4 bg-white border border-slate-200 rounded-2xl space-y-3 text-[12.5px] shadow-md shadow-slate-100/50">
-                    <div>
-                      <span className="block text-[8.5px] font-mono font-black uppercase text-[#009e72] tracking-[0.18em] mb-1">
-                        Cause Determination
-                      </span>
-                      <p className="font-bold text-slate-700 leading-snug">
-                        User criteria sync failure blocked{' '}
-                        <span className="font-mono text-[#009e72] font-black">Akshay Patwa</span> from incident tables. Missing{' '}
-                        <span className="font-mono text-rose-600 font-bold">itil_admin</span> role on WT Apps Servicedesk group.
-                      </p>
-                    </div>
-
-                    <div className="border-t border-slate-150 pt-3">
-                      <span className="block text-[8.5px] font-mono font-black uppercase text-[#009e72] tracking-[0.18em] mb-1">
-                        Resolution Notes (Applied)
-                      </span>
-                      <p className="font-bold text-slate-800 leading-relaxed bg-[#00c08b]/5 p-3 rounded-xl border border-[#00c08b]/20 text-[11.5px]">
-                        Mapped <span className="font-mono font-bold">itil_admin</span> permission to Akshay Patwa. Flushed
-                        user-criteria cache. Verified access — workspace loads under 800ms.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="col-span-12 grid grid-cols-4 gap-3 text-[11px] font-semibold">
-                    {[
-                      { l: 'Category', v: 'Application' },
-                      { l: 'Subcategory', v: 'ServiceNow' },
-                      { l: 'Assignment', v: 'WT Apps Servicedesk' },
-                      { l: 'State', v: 'Resolved · Auto', highlight: true },
-                    ].map((c) => (
-                      <div
-                        key={c.l}
-                        className={`px-2.5 py-2 rounded-xl text-center shadow-sm border ${
-                          c.highlight
-                            ? 'bg-gradient-to-br from-[#00c08b]/8 to-[#84cc16]/4 border-[#00c08b]/30 shadow-md shadow-[#00c08b]/5'
-                            : 'bg-white border-slate-200 text-slate-700'
-                        }`}
-                      >
-                        <span className="block text-[8px] text-slate-400 font-black uppercase tracking-[0.18em]">
-                          {c.l}
+                  <div className="col-span-12 p-3 bg-white border border-slate-200 rounded-xl space-y-2 text-[12px] shadow-sm">
+                    <div className="grid grid-cols-12 gap-4">
+                      <div className="col-span-6 space-y-1.5">
+                        <span className="block text-[8px] font-mono font-black uppercase text-[#009e72] tracking-[0.18em]">
+                          Symmetric Incident Form Field Updates
                         </span>
-                        <span className={`block mt-0.5 ${c.highlight ? 'text-[#009e72] font-black' : 'text-slate-800'}`}>
-                          {c.v}
-                        </span>
+                        <div className="space-y-1 text-[10px] font-bold text-slate-600">
+                          <div className="flex justify-between border-b border-slate-100 pb-1">
+                            <span>Category:</span> <span className="text-slate-900 font-extrabold">Application</span>
+                          </div>
+                          <div className="flex justify-between border-b border-slate-100 pb-1">
+                            <span>CI:</span> <span className="text-slate-900 font-extrabold">Incident Management</span>
+                          </div>
+                          <div className="flex justify-between border-b border-slate-100 pb-1">
+                            <span>Assignment group:</span> <span className="text-slate-400 font-normal italic">Empty (Assignment rule managed)</span>
+                          </div>
+                          <div className="flex justify-between border-b border-slate-100 pb-1">
+                            <span>Assigned to:</span> <span className="text-slate-900 font-extrabold">ZTA User</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Resolution Code:</span> <span className="text-[#009e72] font-black">Solved by User Instruction</span>
+                          </div>
+                        </div>
                       </div>
-                    ))}
+
+                      <div className="col-span-6 space-y-1">
+                        <span className="block text-[8px] font-mono font-black uppercase text-[#009e72] tracking-[0.18em]">
+                          Cause Diagnosis
+                        </span>
+                        <p className="text-[10px] font-bold text-slate-700 leading-normal bg-slate-50 p-2 rounded-lg border border-slate-200/80">
+                          Access permissions issue likely due to ACL or scoped application restriction despite presence of ITIL role and membership in the required groups.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="border-t border-slate-150 pt-2 mt-1">
+                      <span className="block text-[8px] font-mono font-black uppercase text-[#009e72] tracking-[0.18em] mb-1">
+                        Resolution Notes (Applied to Resolution Information Tab)
+                      </span>
+                      <p className="font-extrabold text-slate-800 leading-relaxed bg-[#00c08b]/5 p-2.5 rounded-xl border border-[#00c08b]/20 text-[10.5px]">
+                        Route this request to the ServiceNow platform support team to investigate and correct ACL or scoped application restrictions preventing Incident Management ticket access. No role or group changes required.
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="col-span-12 px-3.5 py-2.5 bg-gradient-to-r from-[#00c08b] to-[#84cc16] rounded-xl flex items-center justify-between text-white font-black text-[12px] shadow-lg shadow-[#00c08b]/25">
+                  <div className="col-span-12 px-3 py-2 bg-gradient-to-r from-[#00c08b] to-[#84cc16] rounded-xl flex items-center justify-between text-white font-black text-[11px] shadow-md shadow-[#00c08b]/20">
                     <div className="flex items-center gap-2">
-                      <ShieldCheck className="h-4 w-4" />
-                      <span>INC4881324 auto-resolved in 32s · confidence-governed</span>
+                      <ShieldCheck className="h-4 w-4 animate-bounce" />
+                      <span>INC4881330 processed & resolved natively in ServiceNow · 100% compliant</span>
                     </div>
-                    <span className="font-mono text-[9.5px] bg-black/15 px-2 py-0.5 rounded tracking-[0.16em] uppercase">
-                      100% governed
+                    <span className="font-mono text-[9px] bg-black/15 px-2 py-0.5 rounded tracking-[0.16em] uppercase">
+                      Solved
                     </span>
                   </div>
                 </div>
@@ -588,7 +590,7 @@ export default function SlideHealOverview() {
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-4 pt-3.5 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11.5px] font-bold text-slate-500 dark:text-slate-400 flex-shrink-0">
+        <div className="mt-4 pt-3.5 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-[11.5px] font-bold text-slate-500 dark:text-slate-400 flex-shrink-0 font-sans">
           <span>Zero ticket toil for repetitive Philips incidents — fully native to ServiceNow.</span>
           <span className="flex items-center gap-1.5 text-[#009e72] dark:text-[#00c08b] font-black">
             <Workflow className="h-4 w-4 animate-pulse" />
